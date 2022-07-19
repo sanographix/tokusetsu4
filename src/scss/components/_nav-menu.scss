@@ -1,0 +1,44 @@
+.nav-menu {
+    margin: var(--space-6) var(--col-space);
+    background: var(--color-bg);
+    position: sticky;
+    top: var(--space-3);
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    background-color: var(--color-blur);
+    border: 1px solid var(--color-border);
+    border-radius: 100px; // 決め打ち
+    overflow: auto;
+    white-space: nowrap;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+.nav-menu-inner {
+    width: fit-content; // 画面がでかければ中央寄せ、狭ければ左寄せ
+    margin: auto;
+    padding: var(--space-2) var(--space-3);
+    display: flex;
+    gap: var(--space-4);
+}
+.nav-menu-link {
+    color: var(--color-text);
+    text-decoration: none;
+    transition: all .25s;
+    @media #{$mq-md} {
+        font-size: var(--font-size-200);
+    }
+    &:hover {
+        color: var(--color-text-highlight);
+        box-shadow: inset 0 -3px 0 0 var(--color-text-highlight);
+    }
+}
+
+// ページ内リンクがメニューにかぶるのを調整
+@keyframes anchor-modify {
+    0% { padding-top: 70px; margin-top: -70px; } // 決め打ち
+  100% { padding-top: 0; margin-top: 0; }
+}
+.section:target {
+  animation: anchor-modify 0.1s;
+}

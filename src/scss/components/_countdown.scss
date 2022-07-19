@@ -1,0 +1,20 @@
+.countdown {
+    display: flex;
+    gap: var(--space-4);
+    margin: var(--space-4) auto 0;
+    width: fit-content;
+    @media #{$mq-md} {
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+.countdown-value {
+    font-size: var(--font-size-400);
+    line-height: var(--line-height-xs);
+    font-weight: bold;
+}
+.countdown-label {
+    text-transform: uppercase;
+    font-size: var(--font-size-50);
+    text-align: center;
+}
