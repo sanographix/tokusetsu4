@@ -1,9 +1,0 @@
-.introduction {
-    margin: 0;
-    @media #{$mq-md} {
-        font-size: var(--font-size-200);
-    }
-    &:not(:first-child) {
-        margin-top: var(--space-4);
-    }
-}
