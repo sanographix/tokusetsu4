@@ -120,4 +120,4 @@ dist
 .pnp.*
 
 # Ignore the build directory
-/build
+build/
