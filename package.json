@@ -23,16 +23,16 @@
     "watch:js": "onchange 'src/js/' -- npm-run-all build:js_preview build:js_index"
   },
   "devDependencies": {
-    "autoprefixer": "^10.3.3",
-    "browser-sync": "^2.27.5",
+    "autoprefixer": "^10.4.7",
+    "browser-sync": "^2.27.10",
     "chokidar-cli": "^3.0.0",
-    "ejs-cli": "^2.2.1",
+    "ejs-cli": "^2.2.3",
     "node-sass": "^7.0.1",
     "node-sass-globbing": "0.0.23",
     "normalize.css": "^8.0.1",
     "npm-run-all": "^4.1.5",
     "onchange": "^7.1.0",
-    "postcss-cli": "^8.3.1",
+    "postcss-cli": "^10.0.0",
     "rimraf": "^3.0.2",
     "uglify-es": "^3.3.9",
     "mkdirp": "^1.0.4"
