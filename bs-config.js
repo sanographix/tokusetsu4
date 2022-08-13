@@ -1,5 +1,9 @@
 module.exports = {
-    files: ['build/css/style.css'],
+    files: [
+        'build/**/*.css',
+        'build/**/*.js',
+        'build/**/*.html',
+    ],
     server: {
         baseDir: "build"
     },
