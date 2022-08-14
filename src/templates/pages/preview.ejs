@@ -1,4 +1,51 @@
 <% pageId = "preview"; %>
 <%- include('../_partial/_header') %>
-<h1 class="header-title js-title">Header Title</h1>
+
+<header class="cover">
+  <img src="cover.jpg" alt="" />
+</header>
+<div class="container">
+  <section class="overview">
+    <div class="overview-main">
+      <h2 class="overview-title js-title">Header Title</h2>
+      <h3 class="organization-name js-organization-name">by トクセツレコーズ</h3>
+      <div class="spec js-spec">
+        <dt>Specification</dt>
+        <dd>プレスCD ＋ ブックレット8ページ</dd>
+        <dt>Release Date</dt>
+        <dd>20xx年x月x日</dd>
+        <dt>Location</dt>
+        <dd>201x年W3　第一展示場　X-00</dd>
+        <dt>Price</dt>
+        <dd>1,000JPY</dd>
+      </div>
+    </div>
+    <div class="overview-art">
+      <img src="art.jpg" alt="Album Art" />
+    </div>
+  </section>
+  <section class="buy">
+    <h2>Available Soon</h2>
+    <a href="" class="button button-primary">A Store</a>
+    <a href="" class="button button-primary">B Store</a>
+    <a href="" class="button button-primary">C Store</a>
+  </section>
+  <nav class="nav-share">
+    <a href="">
+      <svg xmlns="http://www.w3.org/2000/svg" width="19.388" height="19" title="twitter" viewBox="0 0 19.388 19"><g transform="translate(0 -0.2)"><path d="M6.089,32.829a11.312,11.312,0,0,0,11.33-11.422c0-.168,0-.337-.015-.521a8.259,8.259,0,0,0,1.984-2.067,7.945,7.945,0,0,1-2.287.628,4.05,4.05,0,0,0,1.757-2.22,7.945,7.945,0,0,1-2.529.965,3.938,3.938,0,0,0-4.782-.811,4.027,4.027,0,0,0-1.988,4.47,11.274,11.274,0,0,1-8.2-4.211A4.038,4.038,0,0,0,2.59,23a3.711,3.711,0,0,1-1.8-.5v.061A4,4,0,0,0,3.968,26.49a3.927,3.927,0,0,1-1.787.077,3.959,3.959,0,0,0,3.7,2.787A7.822,7.822,0,0,1,.939,31.068,6.594,6.594,0,0,1,0,31.007a11.061,11.061,0,0,0,6.089,1.822" transform="translate(0 -14.48)" fill="#fff"></path></g></svg>
+    </a>
+    <a href="">
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" title="Facebook" viewBox="0 0 20 20.002"><g transform="translate(0.004 0.016)"><path d="M20,9.952a10,10,0,1,0-11.562,9.84v-6.96H5.9V9.952H8.433v-2.2a3.53,3.53,0,0,1,3.781-3.877,15.96,15.96,0,0,1,2.234.187v2.46H13.183a1.441,1.441,0,0,0-1.625,1.557V9.952h2.781l-.453,2.881H11.558v6.96A9.976,9.976,0,0,0,20,9.952Z" transform="translate(0)" fill="#fff"></path><path d="M49.243,35.019l.649-3.223H45.906V29.7c0-.889.56-1.742,2.329-1.742h1.814V25.209a29.162,29.162,0,0,0-3.2-.209c-3.269,0-5.419,1.551-5.419,4.338V31.8H37.8v3.223h3.628v7.788a18.058,18.058,0,0,0,4.479,0V35.019Z" transform="translate(-33.807 -22.96)" fill="none"></path></g></svg>
+    </a>
+    <a href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=SMTP%2B%2B%20Volume.99&amp;details=https://kitekure-sample.netlify.app/&amp;dates=20220112T110000Z/20220112T110000Z" class="add-to-calendar js-add-google-calendar" target="_blank" rel="noopener">
+      <span class="add-to-calendar-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"></path></svg>
+      </span>
+      <span class="add-to-calendar-label">
+        Add to Google Calendar
+      </span>
+    </a>
+  </nav>
+
+</div>
 <%- include('../_partial/_footer') %>

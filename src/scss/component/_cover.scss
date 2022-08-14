@@ -1,0 +1,9 @@
+@use "../global" as g;
+
+.cover {
+    @include g.container();
+    img {
+        max-width: 100%;
+        display: block;
+    }
+}

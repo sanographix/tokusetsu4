@@ -1,0 +1,24 @@
+@use "../global" as g;
+
+.overview {
+    display: grid;
+    grid-template-columns: 1fr 400px;
+    gap: var(--space-3);
+}
+.overview-main {
+}
+.overview-title {
+    margin: 0;
+    font-size: var(--font-size-400);
+}
+.organization-name {
+    margin: 0;
+    font-weight: normal;
+    font-size: var(--font-size-100);
+}
+.overview-art {
+    img {
+        max-width: 100%;
+        display: block;
+    }
+}
