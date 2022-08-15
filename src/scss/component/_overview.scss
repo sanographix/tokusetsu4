@@ -10,15 +10,32 @@
 .overview-title {
     margin: 0;
     font-size: var(--font-size-400);
+    line-height: var(--line-height-sm);
 }
 .organization-name {
     margin: 0;
     font-weight: normal;
-    font-size: var(--font-size-100);
+    font-size: var(--font-size-75);
 }
 .overview-art {
     img {
         max-width: 100%;
         display: block;
     }
+}
+
+.spec {
+    margin-top: var(--space-4);
+}
+.spec-label {
+    color: var(--color-text-highlight);
+    font-size: var(--font-size-75);
+    text-transform: uppercase;
+    font-weight: bold;
+    &:not(:first-child) {
+        margin-top: var(--space-3);
+    }
+}
+.spec-content {
+    margin: 0;
 }
