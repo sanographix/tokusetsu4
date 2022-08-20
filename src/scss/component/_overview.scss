@@ -2,8 +2,8 @@
 
 .overview {
     display: grid;
-    grid-template-columns: 1fr 400px;
-    gap: var(--space-3);
+    grid-template-columns: 480px 1fr;
+    gap: var(--space-6);
 }
 .overview-main {
 }
@@ -19,7 +19,7 @@
 }
 .overview-art {
     img {
-        max-width: 100%;
+        width: 100%;
         display: block;
     }
 }

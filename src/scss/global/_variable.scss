@@ -34,7 +34,7 @@
 
     // Column width
     --col-width: 90%;
-    --col-width-sm: 720px;
+    --col-width-sm: 512px;
     --col-width-md: 1080px;
     --col-width-lg: 1200px;
     --col-width-xl: 1400px;
@@ -55,6 +55,7 @@
     --color-ivory: #F0EDEA;
     --color-ivory-darken: #e1ded9;
     --color-red: #F70138;
+    --color-turquoise: #00D0DD;
     --color-black: #000;
     --color-gray-100: #111111;
     --color-gray-200: #222222;
@@ -62,7 +63,7 @@
     --color-gray-400: #444444;
     --color-gray-800: #888888;
     --color-gray-900: #dddddd;
-    --color-primary: var(--color-red); // configシートで変えられる
+    --color-primary: var(--color-turquoise); // configシートで変えられる
     --color-service: #6107aa;
     --color-white-transparent: rgba(255,255,255,.16);  // 背景の上に薄い色を重ねたいとき
     --color-black-transparent: rgba(0,0,0,.16);  // 背景の上に薄い色を重ねたいとき

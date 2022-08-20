@@ -3,3 +3,17 @@
 .section {
     margin: var(--space-7) auto;
 }
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    h2 {
+        margin: 0;
+    }
+    &::after {
+        content: '';
+        background-color: var(--color-border);
+        height: 1px;
+        flex: 1;
+    }
+}

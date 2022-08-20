@@ -1,0 +1,28 @@
+@use "../global" as g;
+
+.track-table {
+    max-width: var(--col-width-sm);
+    margin: auto;
+    display: grid;
+    gap: var(--space-4);
+}
+.track-tr {
+    counter-increment: list;
+    display: flex;
+}
+.track-th {
+    font-size: var(--font-size-200);
+    font-weight: bold;
+    color: var(--color-text-highlight);
+    &::before {
+        content: counter(list);
+    }
+}
+.track-heading {
+    font-weight: bold;
+    font-size: var(--font-size-200);
+    margin: 0;
+}
+.track-description {
+    color: var(--color-text-secondary);
+}
