@@ -1,0 +1,32 @@
+@use "../global" as g;
+
+.staff-table {
+    max-width: var(--col-width-sm);
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    gap: var(--space-4);
+}
+.staff-tr {
+    display: flex;
+    align-items: center;
+}
+.staff-th {
+    margin-right: var(--space-4);
+    color: var(--color-text-secondary);
+}
+.staff-name {
+    font-size: var(--font-size-200);
+    font-weight: bold;
+}
+.staff-website {
+    border: 1px solid var(--color-border-highlight);
+    color: var(--color-text-highlight);
+    text-decoration: none;
+    display: inline-block;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-50);
+    text-transform: uppercase;
+    line-height: var(--line-height-xs);
+}
