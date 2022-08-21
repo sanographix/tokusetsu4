@@ -2,7 +2,7 @@
  *
  * Tokusetsu 4:
  *   licenses: MIT
- *   Copyright (c) 2021 sanographix
+ *   Copyright (c) 2022 sanographix
  *   https://github.com/sanographix/tokusetsu4
  * CSV.js:
  *   licenses: MIT
@@ -38,14 +38,14 @@ function csv_array(data) {
 
   // Site Title
   const optWorkTitle = array.filter((value) => value.option === 'Title');
-  const optEventDate = array.filter((value) => value.option === 'Date (Local Time)');
+  const optReleaseDate = array.filter((value) => value.option === 'Release Date (Local Time)');
 
   const valWorkTitle = optWorkTitle[0].value1;
-  const valEventDate = optEventDate[0].value1;
+  const valReleaseDate = optReleaseDate[0].value1;
   // エンコードされたイベントタイトル（Googleカレンダー追加ボタンに使う）
-  const encodedEventTitle = encodeURIComponent(valWorkTitle);
+  const encodedWorkTitle = encodeURIComponent(valWorkTitle);
 
-  const siteTitle = new String(valWorkTitle + ' | ' + valEventDate);
+  const siteTitle = new String(valWorkTitle + ' | ' + valReleaseDate);
   // エンコードされたタイトル（シェアボタンに使う）
   const encodedSiteTitle = encodeURIComponent(siteTitle);
 
@@ -57,21 +57,99 @@ function csv_array(data) {
   // Hashtag
   const valHashtag = array.filter((value) => value.option === 'Hashtag')[0].value1;
 
+  // Favicon
+  try {
+    const optFavicon = array.filter((value) => value.option === 'Site Icon (favicon)');
+    const valFavicon = optFavicon[0].value1;
+    const domFavicon = document.getElementById('favicon');
+    domFavicon.href = valFavicon;
+  } catch(error) {
+    console.error('Error: favicon');
+  }
+
+  // og-description
+  // About の1行目の値を利用する
+  const optAbout = array.filter((value) => value.option === 'About');
+  const valAbout = optAbout[0].value1;
+
   /////////////////////////////////////
   // -Header-
 
-  // Header title
+
+  /////////////////////////////////////
+  // -Overview-
+
+  //Work Title
   try {
     const domTitle = document.querySelector('.js-title');
     domTitle.textContent = valWorkTitle;
-    // 文字数が長いときフォントサイズを変える
-    const eventTitleStringCount = valWorkTitle.length;
-    if (eventTitleStringCount > 20) {
-      domTitle.classList.add('is-string-count-long');
-    }
   } catch(error) {
-    console.error('Error: header title');
+    console.error('Error: Title');
   }
 
+  // Specification
+  try {
+    const domSpecification = document.querySelector('.js-specification-content');
+    const optSpecification = array.filter((value) => value.option === 'Specification');
+    const valSpecification = optSpecification[0].value1;
+    domSpecification.textContent = valSpecification;
+  } catch(error) {
+    console.error('Error: Overview Specification');
+  }
+
+  // Release Date
+  try {
+    const domReleaseDate = document.querySelector('.js-releaseDate-content');
+    domReleaseDate.textContent = valReleaseDate;
+  } catch(error) {
+    console.error('Error: Overview Release Date');
+  }
+
+  // Location
+  try {
+    const domLocation = document.querySelector('.js-location-content');
+    const optLocation = array.filter((value) => value.option === 'Location');
+    const valLocation = optLocation[0].value1;
+    domLocation.textContent = valLocation;
+  } catch(error) {
+    console.error('Error: Overview Location');
+  }
+
+  // Price
+  try {
+    const domPrice = document.querySelector('.js-price-content');
+    const optPrice = array.filter((value) => value.option === 'Price');
+    const valPrice = optPrice[0].value1;
+    domPrice.textContent = valPrice;
+  } catch(error) {
+    console.error('Error: Overview Price');
+  }
+
+  /////////////////////////////////////
+  // -About-
+  // About Heading
+  try {
+    const domAboutHeading = document.querySelector('.js-about-heading');
+    const optAboutHeading = array.filter((value) => value.option === 'About Heading');
+    const valAboutHeading = optAboutHeading[0].value1;
+    domAboutHeading.textContent = valAboutHeading;
+    document.querySelector('.js-nav-link-about').textContent = valAboutHeading;
+  } catch(error) {
+    console.error('Error: About heading');
+  }
+
+  // About
+  try {
+    const domAboutWrap = document.querySelector('.js-about-wrap');
+    const domAbout = document.querySelector('.js-about'); // コピー元を取得
+    for (let i = 0; i < optAbout.length; i++) {
+      const domAboutClone = domAbout.cloneNode(true);
+      domAboutClone.textContent = optAbout[i].value1;
+      domAboutWrap.appendChild(domAboutClone);
+    }
+    domAbout.remove(); // コピー元を削除
+  } catch(error) {
+    console.error('Error: About');
+  }
 
 }

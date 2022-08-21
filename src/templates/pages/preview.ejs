@@ -11,16 +11,16 @@
     </div>
     <div class="overview-main">
       <h2 class="overview-title js-title">Header Title</h2>
-      <h3 class="organization-name js-organization-name">by トクセツレコーズ</h3>
-      <div class="spec js-spec">
-        <dt class="spec-label">Specification</dt>
-        <dd class="spec-content">プレスCD ＋ ブックレット8ページ</dd>
-        <dt class="spec-label">Release Date</dt>
-        <dd class="spec-content">20xx年x月x日</dd>
-        <dt class="spec-label">Location</dt>
-        <dd class="spec-content">201x年W3　第一展示場　X-00</dd>
-        <dt class="spec-label">Price</dt>
-        <dd class="spec-content">1,000JPY</dd>
+      <h3 class="organization-name js-organization-name">Organization Name</h3>
+      <div class="overview-table">
+        <dt class="overview-label">Specification</dt>
+        <dd class="overview-content js-specification-content">Specification</dd>
+        <dt class="overview-label">Release Date</dt>
+        <dd class="overview-content js-releaseDate-content">Release Date</dd>
+        <dt class="overview-label">Location</dt>
+        <dd class="overview-content js-location-content">Location</dd>
+        <dt class="overview-label">Price</dt>
+        <dd class="overview-content js-price-content">1,000JPY</dd>
       </div>
     </div>
   </section>
@@ -51,13 +51,23 @@
     <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F{text:04 l Soundcloud Embed Code}&amp;color=ff6600&amp;auto_play=false&amp;show_artwork=true"></iframe>
   </section>
 
-  <section class="section about">
+  <nav class="nav-menu">
+    <div class="nav-menu-inner">
+      <a href="#about" class="nav-menu-link js-nav-link-about">About</a>
+      <a href="#schedule" class="nav-menu-link js-nav-link-schedule">Schedule</a>
+      <a href="#member" class="nav-menu-link js-nav-link-member">Member</a>
+      <a href="#overview" class="nav-menu-link js-nav-link-overview">Overview</a>
+    </div>
+  </nav>
+
+  <section class="section about" id="about">
     <header class="section-header">
-      <h2>About</h2>
+      <h2 class="js-about-heading">About</h2>
     </header>
     <div class="about-content">
-      <p>場合によっては少し盛り上がるベストエフォート型パーティー, それが "SMTP++" 。今回で99度目を迎える SMTP++ が、遂にお茶の間にやって来る！</p>
-      <p>いつものようなメンバーでいつものパーティーをライブ配信します。少しばかりご期待ください。</p>
+      <div class="about-wrap js-about-wrap">
+        <p class="about js-about">About</p>
+      </div>
     </div>
   </section>
   <section class="section gallery">
