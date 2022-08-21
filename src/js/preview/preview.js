@@ -73,6 +73,48 @@ function csv_array(data) {
   const optAbout = array.filter((value) => value.option === 'About');
   const valAbout = optAbout[0].value1;
 
+
+
+
+  /////////////////////////////////////
+  // -Design-
+
+  // Accent Color
+  try {
+    const valAccentColor = array.filter((value) => value.option === 'Accent Color (Hex)')[0].value1;
+    if (valAccentColor != '') {
+      // アクセントカラーを適用
+      document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-primary:' + valAccentColor + '}</style>');
+      document.documentElement.setAttribute('data-accent-color', valAccentColor);
+      // metaタグに指定
+      const domThemeColor = document.getElementById('meta-theme-color');
+      domThemeColor.content = valAccentColor;
+
+      // アクセントカラーのボタン文字色を白黒から判定
+      function blackOrWhite ( hexcolor ) {
+        var r = parseInt( hexcolor.substr( 1, 2 ), 16 ) ;
+        var g = parseInt( hexcolor.substr( 3, 2 ), 16 ) ;
+        var b = parseInt( hexcolor.substr( 5, 2 ), 16 ) ;
+        return ( ( ( (r * 299) + (g * 587) + (b * 114) ) / 1000 ) < 128 ) ? 'white' : 'black' ;
+      }
+      const AccentColorText = blackOrWhite( valAccentColor ) ;
+      switch (AccentColorText) {
+        case 'black':
+          document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-btn-primary-text: var(--color-black)}</style>');
+          break;
+        case 'white':
+          document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-btn-primary-text: var(--color-white)}</style>');
+          break;
+        default:
+          break;
+      }
+    }
+  } catch(error) {
+    console.error('Error: accent-color');
+  }
+
+
+
   /////////////////////////////////////
   // -Header-
 
@@ -134,6 +176,23 @@ function csv_array(data) {
     domPrice.textContent = valPrice;
   } catch(error) {
     console.error('Error: Overview Price');
+  }
+
+  // Hashtag
+  try {
+    const domHashtag = document.querySelector('.js-hashtag');
+    const domHashtagLabel = document.querySelector('.js-hashtag-label');
+    const domHashtagLink = document.querySelector('.js-hashtag-link');
+    if (valHashtag != '') {
+      domHashtagLink.textContent = '#' + valHashtag;
+      const HashtagLink = 'https://twitter.com/hashtag/' + valHashtag + '?src=hash';
+      domHashtagLink.setAttribute('href', HashtagLink);
+    } else {
+      domHashtag.remove();
+      domHashtagLabel.remove();
+    }
+  } catch(error) {
+    console.error('Error: Overview hashtag');
   }
 
   /////////////////////////////////////

@@ -2,6 +2,7 @@
 
 .overview {
     display: grid;
+    align-items: center;
     grid-template-columns: 480px 1fr;
     gap: var(--space-6);
 }
@@ -24,10 +25,10 @@
     }
 }
 
-.spec {
+.overview-table {
     margin-top: var(--space-4);
 }
-.spec-label {
+.overview-label {
     color: var(--color-text-highlight);
     font-size: var(--font-size-75);
     text-transform: uppercase;
@@ -36,6 +37,9 @@
         margin-top: var(--space-3);
     }
 }
-.spec-content {
+.overview-content {
     margin: 0;
+    a {
+        color: inherit;
+    }
 }
