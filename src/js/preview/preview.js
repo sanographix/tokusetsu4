@@ -38,14 +38,15 @@ function csv_array(data) {
 
   // Site Title
   const optWorkTitle = array.filter((value) => value.option === 'Title');
-  const optReleaseDate = array.filter((value) => value.option === 'Release Date (Local Time)');
+  const optOrganization = array.filter((value) => value.option === 'Organization Name');
 
   const valWorkTitle = optWorkTitle[0].value1;
-  const valReleaseDate = optReleaseDate[0].value1;
+  const valOrganization = optOrganization[0].value1;
+
   // エンコードされたイベントタイトル（Googleカレンダー追加ボタンに使う）
   const encodedWorkTitle = encodeURIComponent(valWorkTitle);
 
-  const siteTitle = new String(valWorkTitle + ' | ' + valReleaseDate);
+  const siteTitle = new String(valWorkTitle + ' | ' + valOrganization);
   // エンコードされたタイトル（シェアボタンに使う）
   const encodedSiteTitle = encodeURIComponent(siteTitle);
 
@@ -79,12 +80,20 @@ function csv_array(data) {
   /////////////////////////////////////
   // -Overview-
 
-  //Work Title
+  // Work Title
   try {
     const domTitle = document.querySelector('.js-title');
     domTitle.textContent = valWorkTitle;
   } catch(error) {
     console.error('Error: Title');
+  }
+
+  // Organization
+  try {
+    const domOrganization = document.querySelector('.js-organizationName');
+    domOrganization.textContent = valOrganization;
+  } catch(error) {
+    console.error('Error: Organization');
   }
 
   // Specification
@@ -100,6 +109,8 @@ function csv_array(data) {
   // Release Date
   try {
     const domReleaseDate = document.querySelector('.js-releaseDate-content');
+    const optReleaseDate = array.filter((value) => value.option === 'Release Date (Local Time)');
+    const valReleaseDate = optReleaseDate[0].value1;
     domReleaseDate.textContent = valReleaseDate;
   } catch(error) {
     console.error('Error: Overview Release Date');
