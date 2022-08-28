@@ -1,25 +1,25 @@
 @use "../global" as g;
 
-.staff-table {
+.member-wrap {
     max-width: var(--col-width-sm);
     margin: auto;
     display: grid;
     justify-content: center;
     gap: var(--space-4);
 }
-.staff-tr {
+.member {
     display: flex;
     align-items: center;
 }
-.staff-th {
+.member-role {
     margin-right: var(--space-4);
     color: var(--color-text-secondary);
 }
-.staff-name {
+.member-name {
     font-size: var(--font-size-200);
     font-weight: bold;
 }
-.staff-website {
+.member-url {
     border: 1px solid var(--color-border-highlight);
     color: var(--color-text-highlight);
     text-decoration: none;

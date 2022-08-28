@@ -245,12 +245,12 @@ function csv_array(data) {
       domMemberClone.querySelector('.js-member-name').textContent = optMember[i].value1;
       // option
       if (optMember[i].value2 != '') {
-        domMemberClone.querySelector('.js-member-role').textContent = optMember[i].value3;
+        domMemberClone.querySelector('.js-member-role').textContent = optMember[i].value2;
       } else {
         domMemberClone.querySelector('.js-member-role').remove();
       }
       if (optMember[i].value3 != '') {
-        domMemberClone.querySelector('.js-member-url').setAttribute('href', optMember[i].value5);
+        domMemberClone.querySelector('.js-member-url').setAttribute('href', optMember[i].value3);
       } else {
         domMemberClone.querySelector('.js-member-link').remove();
       }
