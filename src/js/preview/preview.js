@@ -222,4 +222,43 @@ function csv_array(data) {
     console.error('Error: About');
   }
 
+  /////////////////////////////////////
+  // -Member-
+  // Member Heading
+  try {
+    const domMemberHeading = document.querySelector('.js-member-heading');
+    const optMemberHeading = array.filter((value) => value.option === 'Member Heading');
+    const valMemberHeading = optMemberHeading[0].value1;
+    domMemberHeading.textContent = valMemberHeading;
+    document.querySelector('.js-nav-link-member').textContent = valMemberHeading;
+  } catch(error) {
+    console.error('Error: Member heading');
+  }
+
+  // Member
+  try {
+    const domMemberWrap = document.querySelector('.js-member-wrap');
+    const domMember = document.querySelector('.js-member'); // コピー元を取得
+    const optMember = array.filter((value) => value.option === 'Member');
+    for (let i = 0; i < optMember.length; i++) {
+      const domMemberClone = domMember.cloneNode(true);
+      domMemberClone.querySelector('.js-member-name').textContent = optMember[i].value1;
+      // option
+      if (optMember[i].value2 != '') {
+        domMemberClone.querySelector('.js-member-role').textContent = optMember[i].value3;
+      } else {
+        domMemberClone.querySelector('.js-member-role').remove();
+      }
+      if (optMember[i].value3 != '') {
+        domMemberClone.querySelector('.js-member-url').setAttribute('href', optMember[i].value5);
+      } else {
+        domMemberClone.querySelector('.js-member-link').remove();
+      }
+      domMemberWrap.appendChild(domMemberClone);
+    }
+    domMember.remove(); // コピー元を削除
+  } catch(error) {
+    console.error('Error: Member');
+  }
+
 }
