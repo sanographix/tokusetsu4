@@ -5,19 +5,37 @@
     margin: auto;
     display: grid;
     justify-content: center;
-    gap: var(--space-4);
+    gap: var(--space-3);
 }
 .member {
-    display: flex;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-4);
     align-items: center;
 }
 .member-role {
-    margin-right: var(--space-4);
     color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    &::after {
+        content: '';
+        background-color: var(--color-border);
+        height: 1px;
+        flex: 1;
+    }
+}
+.member-content {
+    display: inline-flex;
+    align-items: center;
 }
 .member-name {
     font-size: var(--font-size-200);
     font-weight: bold;
+}
+.member-link {
+    display: inline-block;
+    margin-left: var(--space-2);
 }
 .member-url {
     border: 1px solid var(--color-border-highlight);

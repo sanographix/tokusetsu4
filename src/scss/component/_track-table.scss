@@ -5,15 +5,16 @@
     margin: auto;
     display: grid;
     justify-content: center;
-    gap: var(--space-4);
+    gap: var(--space-3);
 }
 .track-tr {
     counter-increment: list;
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-3);
 }
 .track-th {
     font-size: var(--font-size-200);
-    font-weight: bold;
     color: var(--color-text-highlight);
     &::before {
         content: counter(list);
