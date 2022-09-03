@@ -195,6 +195,43 @@ function csv_array(data) {
     console.error('Error: Overview hashtag');
   }
 
+
+  /////////////////////////////////////
+  // -Store-
+  // Store Heading (Option)
+  try {
+    const domStoreHeading = document.querySelector('.js-store-heading');
+    const optStoreHeading = array.filter((value) => value.option === 'Store Heading');
+    const valStoreHeading = optStoreHeading[0].value1;
+    domStoreHeading.textContent = valStoreHeading;
+    // 空欄ならHTMLから非表示
+    if (valStoreHeading == '') {
+      document.querySelector('.js-section-store').remove();
+    }
+  } catch(error) {
+    console.error('Error: Store heading');
+  }
+  // Store (Option)
+  try {
+    const domStoreWrap = document.querySelector('.js-store-wrap');
+    const domStore = document.querySelector('.js-store-link'); // コピー元を取得
+    const optStore = array.filter((value) => value.option === 'Store');
+    for (let i = 0; i < optStore.length; i++) {
+      const domStoreClone = domStore.cloneNode(true);
+      // option
+      if (optStore[i].value1 != '') {
+        domStoreClone.textContent = optStore[i].value1;
+        domStoreClone.setAttribute('href', optStore[i].value2);
+      }
+      domStoreWrap.appendChild(domStoreClone);
+    }
+    domStore.remove(); // コピー元を削除
+  } catch(error) {
+    console.error('Error: Store');
+  }
+
+
+
   /////////////////////////////////////
   // -About-
   // About Heading
