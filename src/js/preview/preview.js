@@ -231,7 +231,6 @@ function csv_array(data) {
   }
 
 
-
   /////////////////////////////////////
   // -About-
   // About Heading
@@ -257,6 +256,40 @@ function csv_array(data) {
     domAbout.remove(); // コピー元を削除
   } catch(error) {
     console.error('Error: About');
+  }
+
+  /////////////////////////////////////
+  // -Tracklist-
+  // Tracklist Heading
+  try {
+    const domTracklistHeading = document.querySelector('.js-tracklist-heading');
+    const optTracklistHeading = array.filter((value) => value.option === 'Tracklist Heading');
+    const valTracklistHeading = optTracklistHeading[0].value1;
+    domTracklistHeading.textContent = valTracklistHeading;
+    document.querySelector('.js-nav-link-tracklist').textContent = valTracklistHeading;
+  } catch(error) {
+    console.error('Error: Tracklist heading');
+  }
+
+  // Tracklist
+  try {
+    const domTrackWrap = document.querySelector('.js-track-wrap');
+    const domTrack = document.querySelector('.js-track'); // コピー元を取得
+    const optTrack = array.filter((value) => value.option === 'Track');
+    for (let i = 0; i < optTrack.length; i++) {
+      const domTrackClone = domTrack.cloneNode(true);
+      domTrackClone.querySelector('.js-track-name').textContent = optTrack[i].value1;
+      // option
+      if (optTrack[i].value2 != '') {
+        domTrackClone.querySelector('.js-track-description').textContent = optTrack[i].value2;
+      } else {
+        domTrackClone.querySelector('.js-track-description').remove();
+      }
+      domTrackWrap.appendChild(domTrackClone);
+    }
+    domTrack.remove(); // コピー元を削除
+  } catch(error) {
+    console.error('Error: Track');
   }
 
   /////////////////////////////////////
