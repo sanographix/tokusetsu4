@@ -5,118 +5,123 @@
   <img src="cover.jpg" alt="" />
 </header>
 <div class="container">
-  <section class="overview">
-    <div class="overview-art">
-      <img src="art.jpg" alt="Album Art" />
-    </div>
-    <div class="overview-main">
-      <h2 class="overview-title js-title">Header Title</h2>
-      <h3 class="organization-name js-organizationName">Organization Name</h3>
-      <div class="overview-table">
-        <dt class="overview-label">Specification</dt>
-        <dd class="overview-content js-specification-content">Specification</dd>
-        <dt class="overview-label">Release Date</dt>
-        <dd class="overview-content js-releaseDate-content">Release Date</dd>
-        <dt class="overview-label">Location</dt>
-        <dd class="overview-content js-location-content">Location</dd>
-        <dt class="overview-label">Price</dt>
-        <dd class="overview-content js-price-content">Price</dd>
-        <dt class="overview-label js-hashtag-label">Hashtag</dt>
-        <dd class="overview-content js-hashtag">
-          <a href="https://twitter.com/hashtag/" class="js-hashtag-link">#hashtag</a>
-        </dd>
+  <div class="containerMask js-containerMask"></div>
+  <div class="container-inner">
+
+    <section class="overview">
+      <div class="overview-art">
+        <img src="art.jpg" alt="Album Art" />
       </div>
-    </div>
-  </section>
-  <section class="section section-store js-section-store">
-    <h2 class="store-heading js-store-heading">Store</h2>
-    <div class="store-wrap js-store-wrap">
-      <a href="" class="button button-primary js-store-link">Store</a>
-    </div>
-  </section>
-  <nav class="section nav-share">
-    <a href="" class="share-btn share-tw js-share-tw">
-      <svg xmlns="http://www.w3.org/2000/svg" width="19.388" height="19" title="twitter" viewBox="0 0 19.388 19"><g transform="translate(0 -0.2)"><path d="M6.089,32.829a11.312,11.312,0,0,0,11.33-11.422c0-.168,0-.337-.015-.521a8.259,8.259,0,0,0,1.984-2.067,7.945,7.945,0,0,1-2.287.628,4.05,4.05,0,0,0,1.757-2.22,7.945,7.945,0,0,1-2.529.965,3.938,3.938,0,0,0-4.782-.811,4.027,4.027,0,0,0-1.988,4.47,11.274,11.274,0,0,1-8.2-4.211A4.038,4.038,0,0,0,2.59,23a3.711,3.711,0,0,1-1.8-.5v.061A4,4,0,0,0,3.968,26.49a3.927,3.927,0,0,1-1.787.077,3.959,3.959,0,0,0,3.7,2.787A7.822,7.822,0,0,1,.939,31.068,6.594,6.594,0,0,1,0,31.007a11.061,11.061,0,0,0,6.089,1.822" transform="translate(0 -14.48)" fill="#fff"></path></g></svg>
-    </a>
-    <a href="" class="share-btn share-fb js-share-fb">
-      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" title="Facebook" viewBox="0 0 20 20.002"><g transform="translate(0.004 0.016)"><path d="M20,9.952a10,10,0,1,0-11.562,9.84v-6.96H5.9V9.952H8.433v-2.2a3.53,3.53,0,0,1,3.781-3.877,15.96,15.96,0,0,1,2.234.187v2.46H13.183a1.441,1.441,0,0,0-1.625,1.557V9.952h2.781l-.453,2.881H11.558v6.96A9.976,9.976,0,0,0,20,9.952Z" transform="translate(0)" fill="#fff"></path><path d="M49.243,35.019l.649-3.223H45.906V29.7c0-.889.56-1.742,2.329-1.742h1.814V25.209a29.162,29.162,0,0,0-3.2-.209c-3.269,0-5.419,1.551-5.419,4.338V31.8H37.8v3.223h3.628v7.788a18.058,18.058,0,0,0,4.479,0V35.019Z" transform="translate(-33.807 -22.96)" fill="none"></path></g></svg>
-    </a>
-    <a href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=SMTP%2B%2B%20Volume.99&amp;details=https://kitekure-sample.netlify.app/&amp;dates=20220112T110000Z/20220112T110000Z" class="add-to-calendar js-add-google-calendar" target="_blank" rel="noopener">
-      <span class="add-to-calendar-icon">
-        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"></path></svg>
-      </span>
-      <span class="add-to-calendar-label">
-        Add to Google Calendar
-      </span>
-    </a>
-  </nav>
-
-  <section class="section inlinePlayer">
-    <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F{text:04 l Soundcloud Embed Code}&amp;color=ff6600&amp;auto_play=false&amp;show_artwork=true"></iframe>
-  </section>
-
-  <nav class="nav-menu">
-    <div class="nav-menu-inner">
-      <a href="#about" class="nav-menu-link js-nav-link-about">About</a>
-      <a href="#tracklist" class="nav-menu-link js-nav-link-tracklist">Tracklist</a>
-      <a href="#member" class="nav-menu-link js-nav-link-member">Member</a>
-      <a href="#overview" class="nav-menu-link js-nav-link-overview">Overview</a>
-    </div>
-  </nav>
-
-  <section class="section about" id="about">
-    <header class="section-header">
-      <h2 class="js-about-heading">About</h2>
-    </header>
-    <div class="about-content">
-      <div class="about-wrap js-about-wrap">
-        <p class="about js-about">About</p>
-      </div>
-    </div>
-  </section>
-  <section class="section gallery">
-    <header class="section-header">
-      <h2>Gallery</h2>
-    </header>
-    <img src="" />
-  </section>
-  <section class="section section-tracklist">
-    <header class="section-header">
-      <h2 class="js-tracklist-heading">Tracklist</h2>
-    </header>
-    <div class="track-table js-track-wrap">
-      <div class="track-tr js-track">
-        <div class="track-th js-track-time"></div>
-        <div class="track-td">
-          <h4 class="track-heading js-track-name">Track name</h4>
-          <div class="track-description js-track-description">Track description</div>
+      <div class="overview-main">
+        <h2 class="overview-title js-title">Header Title</h2>
+        <h3 class="organization-name js-organizationName">Organization Name</h3>
+        <div class="overview-table">
+          <dt class="overview-label">Specification</dt>
+          <dd class="overview-content js-specification-content">Specification</dd>
+          <dt class="overview-label">Release Date</dt>
+          <dd class="overview-content js-releaseDate-content">Release Date</dd>
+          <dt class="overview-label">Location</dt>
+          <dd class="overview-content js-location-content">Location</dd>
+          <dt class="overview-label">Price</dt>
+          <dd class="overview-content js-price-content">Price</dd>
+          <dt class="overview-label js-hashtag-label">Hashtag</dt>
+          <dd class="overview-content js-hashtag">
+            <a href="https://twitter.com/hashtag/" class="js-hashtag-link">#hashtag</a>
+          </dd>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="section section-member">
-    <header class="section-header">
-      <h2 class="js-member-heading">Member Heading</h2>
-    </header>
-    <div class="member-wrap js-member-wrap">
-      <div class="member js-member">
-        <div class="member-role js-member-role">
-          Role
-        </div>
-        <div class="member-content">
-          <span class="member-name js-member-name">Member name</span>
-          <nav class="member-link js-member-link">
-            <a href="" class="member-url js-member-url">Website</a>
-          </nav>
+    </section>
+    <section class="section section-store js-section-store">
+      <h2 class="store-heading js-store-heading">Store</h2>
+      <div class="store-wrap js-store-wrap">
+        <a href="" class="button button-primary js-store-link">Store</a>
+      </div>
+    </section>
+    <nav class="section nav-share">
+      <a href="" class="share-btn share-tw js-share-tw">
+        <svg xmlns="http://www.w3.org/2000/svg" width="19.388" height="19" title="twitter" viewBox="0 0 19.388 19"><g transform="translate(0 -0.2)"><path d="M6.089,32.829a11.312,11.312,0,0,0,11.33-11.422c0-.168,0-.337-.015-.521a8.259,8.259,0,0,0,1.984-2.067,7.945,7.945,0,0,1-2.287.628,4.05,4.05,0,0,0,1.757-2.22,7.945,7.945,0,0,1-2.529.965,3.938,3.938,0,0,0-4.782-.811,4.027,4.027,0,0,0-1.988,4.47,11.274,11.274,0,0,1-8.2-4.211A4.038,4.038,0,0,0,2.59,23a3.711,3.711,0,0,1-1.8-.5v.061A4,4,0,0,0,3.968,26.49a3.927,3.927,0,0,1-1.787.077,3.959,3.959,0,0,0,3.7,2.787A7.822,7.822,0,0,1,.939,31.068,6.594,6.594,0,0,1,0,31.007a11.061,11.061,0,0,0,6.089,1.822" transform="translate(0 -14.48)" fill="#fff"></path></g></svg>
+      </a>
+      <a href="" class="share-btn share-fb js-share-fb">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" title="Facebook" viewBox="0 0 20 20.002"><g transform="translate(0.004 0.016)"><path d="M20,9.952a10,10,0,1,0-11.562,9.84v-6.96H5.9V9.952H8.433v-2.2a3.53,3.53,0,0,1,3.781-3.877,15.96,15.96,0,0,1,2.234.187v2.46H13.183a1.441,1.441,0,0,0-1.625,1.557V9.952h2.781l-.453,2.881H11.558v6.96A9.976,9.976,0,0,0,20,9.952Z" transform="translate(0)" fill="#fff"></path><path d="M49.243,35.019l.649-3.223H45.906V29.7c0-.889.56-1.742,2.329-1.742h1.814V25.209a29.162,29.162,0,0,0-3.2-.209c-3.269,0-5.419,1.551-5.419,4.338V31.8H37.8v3.223h3.628v7.788a18.058,18.058,0,0,0,4.479,0V35.019Z" transform="translate(-33.807 -22.96)" fill="none"></path></g></svg>
+      </a>
+      <a href="https://www.google.com/calendar/event?action=TEMPLATE&amp;text=SMTP%2B%2B%20Volume.99&amp;details=https://kitekure-sample.netlify.app/&amp;dates=20220112T110000Z/20220112T110000Z" class="add-to-calendar js-add-google-calendar" target="_blank" rel="noopener">
+        <span class="add-to-calendar-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#FFFFFF"><path d="M0 0h24v24H0V0z" fill="none"></path><path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2zm-7 5h5v5h-5z"></path></svg>
+        </span>
+        <span class="add-to-calendar-label">
+          Add to Google Calendar
+        </span>
+      </a>
+    </nav>
+
+    <section class="section inlinePlayer">
+      <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F{text:04 l Soundcloud Embed Code}&amp;color=ff6600&amp;auto_play=false&amp;show_artwork=true"></iframe>
+    </section>
+
+    <nav class="nav-menu">
+      <div class="nav-menu-inner">
+        <a href="#about" class="nav-menu-link js-nav-link-about">About</a>
+        <a href="#tracklist" class="nav-menu-link js-nav-link-tracklist">Tracklist</a>
+        <a href="#member" class="nav-menu-link js-nav-link-member">Member</a>
+        <a href="#overview" class="nav-menu-link js-nav-link-overview">Overview</a>
+      </div>
+    </nav>
+
+    <section class="section about" id="about">
+      <header class="section-header">
+        <h2 class="js-about-heading">About</h2>
+      </header>
+      <div class="about-content">
+        <div class="about-wrap js-about-wrap">
+          <p class="about js-about">About</p>
         </div>
       </div>
-    </div>
-  </section>
-  <section class="section archive">
-    <header class="section-header">
-      <h2>Archive</h2>
-    </header>
-  </section>
+    </section>
+    <section class="section gallery">
+      <header class="section-header">
+        <h2>Gallery</h2>
+      </header>
+      <img src="" />
+    </section>
+    <section class="section section-tracklist">
+      <header class="section-header">
+        <h2 class="js-tracklist-heading">Tracklist</h2>
+      </header>
+      <div class="track-table js-track-wrap">
+        <div class="track-tr js-track">
+          <div class="track-th js-track-time"></div>
+          <div class="track-td">
+            <h4 class="track-heading js-track-name">Track name</h4>
+            <div class="track-description js-track-description">Track description</div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section section-member">
+      <header class="section-header">
+        <h2 class="js-member-heading">Member Heading</h2>
+      </header>
+      <div class="member-wrap js-member-wrap">
+        <div class="member js-member">
+          <div class="member-role js-member-role">
+            Role
+          </div>
+          <div class="member-content">
+            <span class="member-name js-member-name">Member name</span>
+            <nav class="member-link js-member-link">
+              <a href="" class="member-url js-member-url">Website</a>
+            </nav>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section archive">
+      <header class="section-header">
+        <h2>Archive</h2>
+      </header>
+    </section>
+
+  </div>
 
 </div>
 <%- include('../_partial/_footer') %>

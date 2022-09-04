@@ -79,6 +79,14 @@ function csv_array(data) {
   /////////////////////////////////////
   // -Design-
 
+  // Theme
+  try {
+    const valTheme = array.filter((value) => value.option === 'Theme')[0].value1;
+    document.documentElement.setAttribute('data-theme', valTheme);
+  } catch(error) {
+    console.error('Error: theme');
+  }
+
   // Accent Color
   try {
     const valAccentColor = array.filter((value) => value.option === 'Accent Color (Hex)')[0].value1;
@@ -113,9 +121,19 @@ function csv_array(data) {
     console.error('Error: accent-color');
   }
 
+  // Background Color
+  try {
+    const valBackgroundColor = array.filter((value) => value.option === 'Background Color (Hex)')[0].value1;
+    if (valBackgroundColor != '') {
+      // アクセントカラーを適用
+      document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-bg:' + valBackgroundColor + '}</style>');
+    }
+  } catch(error) {
+    console.error('Error: background-color');
+  }
+
   // Background Image
   try {
-    const domBackgroundImage = document.body;
     const optBackgroundImage = array.filter((value) => value.option === 'Background Image');
     const valBackgroundImageSrc = optBackgroundImage[0].value1;
     const valBackgroundImageRepeat = optBackgroundImage[0].value2;
@@ -124,7 +142,6 @@ function csv_array(data) {
     // 画像URL
     if (valBackgroundImageSrc != '') {
       document.body.style.backgroundImage = 'url(' + valBackgroundImageSrc + ')';
-    } else {
     }
     // 画像の繰り返し
     switch (valBackgroundImageRepeat) {
@@ -162,9 +179,19 @@ function csv_array(data) {
       document.body.style.backgroundAttachment = 'fixed';
     }
   } catch(error) {
-    console.error('Error: header');
+    console.error('Error: Background Image');
   }
 
+  // Background Mask Opacity
+  try {
+    const valBackgroundMaskOpacity = array.filter((value) => value.option === 'Background Mask Opacity')[0].value1;
+    const domContainer = document.querySelector('.js-containerMask');
+    if (valBackgroundMaskOpacity != '') {
+      domContainer.style.opacity = valBackgroundMaskOpacity;
+    }
+  } catch(error) {
+    console.error('Error: Background mask opacity');
+  }
 
   /////////////////////////////////////
   // -Header-

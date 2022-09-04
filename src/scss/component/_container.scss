@@ -2,6 +2,19 @@
 
 .container {
     @include g.container();
-    background-color: rgba(0,0,0,.8);
     padding: var(--space-4);
+    position: relative;
+}
+
+.containerMask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--color-bg);
+}
+
+.container-inner {
+    position: relative;
 }
