@@ -9,8 +9,7 @@ html{
 }
 body {
     font-family: var(--font);
-    background: var(--color-bg);
-    background-image: url('/background.jpg');
+    background-color: var(--color-bg);
     background-size: contain;
     color: var(--color-text);
     line-height: var(--line-height-base);

@@ -113,6 +113,21 @@ function csv_array(data) {
     console.error('Error: accent-color');
   }
 
+  // Background Image
+  try {
+    const domBackgroundImage = document.body;
+    const optBackgroundImage = array.filter((value) => value.option === 'Background Image');
+    const valBackgroundImageSrc = optBackgroundImage[0].value1;
+    const valBackgroundImageRepeat = optBackgroundImage[0].value2;
+    const valBackgroundImageAlign = optBackgroundImage[0].value3;
+    const valBackgroundImageFixed = optBackgroundImage[0].value4;
+    if (valBackgroundImageSrc != '') {
+      document.body.style.backgroundImage = 'url(' + valBackgroundImageSrc + ')';
+    } else {
+    }
+  } catch(error) {
+    console.error('Error: header');
+  }
 
 
   /////////////////////////////////////
