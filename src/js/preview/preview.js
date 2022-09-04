@@ -121,9 +121,45 @@ function csv_array(data) {
     const valBackgroundImageRepeat = optBackgroundImage[0].value2;
     const valBackgroundImageAlign = optBackgroundImage[0].value3;
     const valBackgroundImageFixed = optBackgroundImage[0].value4;
+    // 画像URL
     if (valBackgroundImageSrc != '') {
       document.body.style.backgroundImage = 'url(' + valBackgroundImageSrc + ')';
     } else {
+    }
+    // 画像の繰り返し
+    switch (valBackgroundImageRepeat) {
+      case 'Both':
+        document.body.style.backgroundRepeat = 'repeat';
+        break;
+      case 'Horizontally':
+        document.body.style.backgroundRepeat = 'repeat-x';
+        break;
+      case 'Vertically':
+        document.body.style.backgroundRepeat = 'repeat-y';
+        break;
+      case 'None':
+        document.body.style.backgroundRepeat = 'no-repeat';
+        break;
+      default:
+        document.body.style.backgroundRepeat = 'no-repeat';
+    }
+    // 画像の位置
+    switch (valBackgroundImageAlign) {
+      case 'Center':
+        document.body.style.backgroundPosition = 'center top';
+        break;
+      case 'Left':
+        document.body.style.backgroundPosition = 'left top';
+        break;
+      case 'Right':
+        document.body.style.backgroundPosition = 'right top';
+        break;
+      default:
+        document.body.style.backgroundPosition = 'center top';
+    }
+    // 画像の固定
+    if (valBackgroundImageFixed == '✅') {
+      document.body.style.backgroundAttachment = 'fixed';
     }
   } catch(error) {
     console.error('Error: header');
