@@ -3,8 +3,13 @@
 .overview {
     display: grid;
     align-items: center;
-    grid-template-columns: 480px 1fr;
     gap: var(--space-6);
+    @media #{g.$mq-md} {
+        grid-template-columns: 1fr 1fr;
+    }
+    @media #{g.$mq-lg} {
+        grid-template-columns: 480px 1fr;
+    }
 }
 .overview-main {
 }

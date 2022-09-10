@@ -48,6 +48,7 @@
     // z-index
     --z-index-bg: -1;
     --z-index-base: 1;
+    --z-sticky: 9;
     --z-index-modal: 10;
 
     // Color
@@ -70,7 +71,7 @@
     --color-black-transparent-60: rgba(0,0,0,.6);
     --color-white-transparent: rgba(255,255,255,.16);  // 背景の上に薄い色を重ねたいとき
     --color-black-transparent: rgba(0,0,0,.16);  // 背景の上に薄い色を重ねたいとき
-    --color-black-blur: rgba(0,0,0,.3);
+    --color-black-blur: rgba(0,0,0,.75);
 
     --color-tw: #55acee;
     --color-fb: #1877F2;
@@ -118,8 +119,6 @@ $mq-xl: "(min-width: 1280px)";
 $mq-xxl: "(min-width: 1600px)";
 
 @mixin container() {
-    margin-left: var(--col-space);
-    margin-right: var(--col-space);
     @media #{$mq-md} {
         margin-left: auto;
         margin-right: auto;
