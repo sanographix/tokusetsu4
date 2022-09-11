@@ -79,13 +79,44 @@ function csv_array(data) {
   /////////////////////////////////////
   // -Design-
 
+  // Background Color
+  try {
+    var valBackgroundColor = array.filter((value) => value.option === 'Background Color (Hex)')[0].value1;
+    if (valBackgroundColor != '') {
+      // 背景色を適用
+      document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-bg:' + valBackgroundColor + '}</style>');
+    }
+  } catch(error) {
+    console.error('Error: background-color');
+  }
+
+  // 文字色（白・黒）を背景色のカラーコードから判定する関数
+  // Theme, Accent Color で使用
+  function blackOrWhite ( hexcolor ) {
+    var r = parseInt( hexcolor.substr( 1, 2 ), 16 ) ;
+    var g = parseInt( hexcolor.substr( 3, 2 ), 16 ) ;
+    var b = parseInt( hexcolor.substr( 5, 2 ), 16 ) ;
+    return ( ( ( (r * 299) + (g * 587) + (b * 114) ) / 1000 ) < 128 ) ? 'white' : 'black' ;
+  }
+
   // Theme
   try {
-    const valTheme = array.filter((value) => value.option === 'Theme')[0].value1;
-    document.documentElement.setAttribute('data-theme', valTheme);
+    // 文字色（白・黒）を背景色のカラーコードから判定
+    var valThemeTextColor = blackOrWhite( valBackgroundColor );
+    switch (valThemeTextColor) {
+      case 'black':
+        document.documentElement.setAttribute('data-theme', 'Light');
+        break;
+      case 'white':
+        document.documentElement.setAttribute('data-theme', 'Dark');
+        break;
+      default:
+        break;
+    }
   } catch(error) {
     console.error('Error: theme');
   }
+
 
   // Accent Color
   try {
@@ -98,13 +129,6 @@ function csv_array(data) {
       const domThemeColor = document.getElementById('meta-theme-color');
       domThemeColor.content = valAccentColor;
 
-      // アクセントカラーのボタン文字色を白黒から判定
-      function blackOrWhite ( hexcolor ) {
-        var r = parseInt( hexcolor.substr( 1, 2 ), 16 ) ;
-        var g = parseInt( hexcolor.substr( 3, 2 ), 16 ) ;
-        var b = parseInt( hexcolor.substr( 5, 2 ), 16 ) ;
-        return ( ( ( (r * 299) + (g * 587) + (b * 114) ) / 1000 ) < 128 ) ? 'white' : 'black' ;
-      }
       const AccentColorText = blackOrWhite( valAccentColor ) ;
       switch (AccentColorText) {
         case 'black':
@@ -119,17 +143,6 @@ function csv_array(data) {
     }
   } catch(error) {
     console.error('Error: accent-color');
-  }
-
-  // Background Color
-  try {
-    const valBackgroundColor = array.filter((value) => value.option === 'Background Color (Hex)')[0].value1;
-    if (valBackgroundColor != '') {
-      // アクセントカラーを適用
-      document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-bg:' + valBackgroundColor + '}</style>');
-    }
-  } catch(error) {
-    console.error('Error: background-color');
   }
 
   // Background Image
