@@ -2,7 +2,7 @@
 
 .button {
     display: inline-block;
-    padding: var(--space-2) var(--space-3);
+    padding: calc(var(--space-2) + var(--space-1)) var(--space-3);
     line-height: var(--line-height-sm);
     font-family: inherit;
     font-size: var(--font-size-75);

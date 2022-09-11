@@ -2,9 +2,19 @@
 
 .section-store {
     text-align: center;
+    margin: var(--space-5) auto;
 }
 
 .store-heading {
-    font-size: var(--font-size-500);
-    margin: 0;
+    font-size: var(--font-size-400);
+    line-height: var(--line-height-sm);
+    margin: 0 0 var(--space-3);
+}
+.store-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    & > * {
+        margin: var(--space-1);
+    }
 }
