@@ -330,7 +330,6 @@ function csv_array(data) {
     const optAboutHeading = array.filter((value) => value.option === 'About Heading');
     const valAboutHeading = optAboutHeading[0].value1;
     domAboutHeading.textContent = valAboutHeading;
-    document.querySelector('.js-nav-link-about').textContent = valAboutHeading;
   } catch(error) {
     console.error('Error: About heading');
   }
@@ -357,7 +356,6 @@ function csv_array(data) {
     const optTracklistHeading = array.filter((value) => value.option === 'Tracklist Heading');
     const valTracklistHeading = optTracklistHeading[0].value1;
     domTracklistHeading.textContent = valTracklistHeading;
-    document.querySelector('.js-nav-link-tracklist').textContent = valTracklistHeading;
   } catch(error) {
     console.error('Error: Tracklist heading');
   }
@@ -391,7 +389,6 @@ function csv_array(data) {
     const optMemberHeading = array.filter((value) => value.option === 'Member Heading');
     const valMemberHeading = optMemberHeading[0].value1;
     domMemberHeading.textContent = valMemberHeading;
-    document.querySelector('.js-nav-link-member').textContent = valMemberHeading;
   } catch(error) {
     console.error('Error: Member heading');
   }
