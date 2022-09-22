@@ -63,6 +63,27 @@
   });
 }());
 
+// gallery
+(function() {
+  var samples = document.querySelectorAll('.bookSample-content');
+  var lightboxes = document.querySelectorAll('.bookSample-lightbox');
+  if (samples.length < 1) { return false; }
+  Array.prototype.forEach.call(samples, function (sampleElem) {
+    sampleElem.addEventListener('click', function () {
+      var sampleIndex = sampleElem.dataset['index'];
+      var lightbox = document.querySelector('.bookSample-lightbox[data-index="' + sampleIndex + '"]');
+      lightbox.classList.add('is-open');
+      document.body.classList.add('is-open');
+    });
+  });
+  Array.prototype.forEach.call(lightboxes, function (lightboxElem) {
+    lightboxElem.addEventListener('click', function () {
+      lightboxElem.classList.remove('is-open');
+      document.body.classList.remove('is-open');
+    })
+  })
+})();
+
 // prebuildバナー
 (function() {
   window.addEventListener("load", function () {
