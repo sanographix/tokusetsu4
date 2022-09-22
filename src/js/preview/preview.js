@@ -349,6 +349,37 @@ function csv_array(data) {
   }
 
   /////////////////////////////////////
+  // -Gallery-
+  try {
+    const optGallery = array.filter((value) => value.option === 'Gallery');
+    const domGalleryWrap = document.querySelector('.js-dom-gallery-wrap');
+    const domGallery = document.querySelector('.js-dom-gallery'); // コピー元を取得
+
+    // lightbox
+    const domGalleryLightboxWrap = document.querySelector('.js-dom-gallery-lightbox-wrap');
+    const domGalleryLightbox = document.querySelector('.js-dom-gallery-lightbox'); // コピー元を取得
+
+    for (let i = 0; i < optGallery.length; i++) {
+      const domGalleryClone = domGallery.cloneNode(true);
+      domGalleryClone.setAttribute('data-index', i + 1); // lightbox のために data 属性を振る
+      domGalleryClone.querySelector('.js-dom-gallery-img').setAttribute('src', optGallery[i].value1);
+      domGalleryWrap.appendChild(domGalleryClone);
+
+      // lightbox
+      const domGalleryLightboxClone = domGalleryLightbox.cloneNode(true);
+      domGalleryLightboxClone.setAttribute('data-index', i + 1); // lightbox のために data 属性を振る
+      domGalleryLightboxClone.querySelector('.js-dom-gallery-lightbox-img').setAttribute('src', optGallery[i].value1);
+      domGalleryLightboxWrap.appendChild(domGalleryLightboxClone);
+
+    }
+    domGallery.remove(); // コピー元を削除
+    domGalleryLightbox.remove(); // コピー元を削除
+  } catch(error) {
+    console.error('Error: Gallery');
+  }
+
+
+  /////////////////////////////////////
   // -Tracklist-
   // Tracklist Heading
   try {

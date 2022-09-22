@@ -60,6 +60,8 @@
 
     <section class="section inlinePlayer">
       <iframe width="100%" height="166" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=http%3A%2F%2Fapi.soundcloud.com%2Ftracks%2F{text:04 l Soundcloud Embed Code}&amp;color=ff6600&amp;auto_play=false&amp;show_artwork=true"></iframe>
+
+      <iframe width="560" height="315" src="https://www.youtube.com/embed/{text:04 l Youtube Embed Code}" frameborder="0" allowfullscreen></iframe>
     </section>
 
     <section class="section section-about" id="about">
@@ -79,28 +81,18 @@
         <header class="section-header">
           <h2>Gallery</h2>
         </header>
-        <ul class="gallery-items">
-          <li class="gallery-item js-gallery-item" data-index="1">
-            <img src="gallery1.jpg" alt="" class="gallery-img js-gallery-img" />
-          </li>
-          <li class="gallery-item js-gallery-item" data-index="2">
-            <img src="gallery2.jpg" alt="" class="gallery-img js-gallery-img" />
-          </li>
-          <li class="gallery-item js-gallery-item" data-index="3">
-            <img src="gallery1.jpg" alt="" class="gallery-img js-gallery-img" />
+        <ul class="gallery-items js-dom-gallery-wrap">
+          <li class="gallery-item js-gallery-item js-dom-gallery" data-index="1">
+            <img src="" alt="" class="gallery-img js-gallery-img js-dom-gallery-img" />
           </li>
         </ul>
       </div>
 
       <%# lightbox %>
-      <div class="gallery-lightbox js-gallery-lightbox" data-index="1">
-        <img src="gallery1.jpg" alt="" class="gallery-lightbox-image js-gallery-lightbox-image">
-      </div>
-      <div class="gallery-lightbox js-gallery-lightbox" data-index="2">
-        <img src="gallery2.jpg" alt="" class="gallery-lightbox-image js-gallery-lightbox-image">
-      </div>
-      <div class="gallery-lightbox js-gallery-lightbox" data-index="3">
-        <img src="gallery1.jpg" alt="" class="gallery-lightbox-image js-gallery-lightbox-image">
+      <div class="js-dom-gallery-lightbox-wrap">
+        <div class="gallery-lightbox js-gallery-lightbox js-dom-gallery-lightbox" data-index="1">
+          <img src="" alt="" class="gallery-lightbox-image js-gallery-lightbox-image js-dom-gallery-lightbox-img">
+        </div>
       </div>
 
     </section>

@@ -65,23 +65,25 @@
 
 // gallery
 (function() {
-  const samples = document.querySelectorAll('.js-gallery-item');
-  const lightboxes = document.querySelectorAll('.js-gallery-lightbox');
-  if (samples.length < 1) { return false; }
-  Array.prototype.forEach.call(samples, function (sampleElem) {
-    sampleElem.addEventListener('click', function () {
-      const sampleIndex = sampleElem.dataset['index'];
-      const lightbox = document.querySelector('.js-gallery-lightbox[data-index="' + sampleIndex + '"]');
-      lightbox.classList.add('is-open');
-      document.body.classList.add('is-lightbox-opened');
+  window.addEventListener("load", function () {
+    const samples = document.querySelectorAll('.js-gallery-item');
+    const lightboxes = document.querySelectorAll('.js-gallery-lightbox');
+    if (samples.length < 1) { return false; }
+    Array.prototype.forEach.call(samples, function (sampleElem) {
+      sampleElem.addEventListener('click', function () {
+        const sampleIndex = sampleElem.dataset['index'];
+        const lightbox = document.querySelector('.js-gallery-lightbox[data-index="' + sampleIndex + '"]');
+        lightbox.classList.add('is-open');
+        document.body.classList.add('is-lightbox-opened');
+      });
     });
-  });
-  Array.prototype.forEach.call(lightboxes, function (lightboxElem) {
-    lightboxElem.addEventListener('click', function () {
-      lightboxElem.classList.remove('is-open');
-      document.body.classList.remove('is-lightbox-opened');
+    Array.prototype.forEach.call(lightboxes, function (lightboxElem) {
+      lightboxElem.addEventListener('click', function () {
+        lightboxElem.classList.remove('is-open');
+        document.body.classList.remove('is-lightbox-opened');
+      })
     })
-  })
+  });
 })();
 
 // prebuildバナー
