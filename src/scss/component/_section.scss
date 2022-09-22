@@ -2,18 +2,21 @@
 
 .section {
     margin: var(--space-7) auto;
+    padding-top: var(--space-4);
+    & + .section {
+        border-top: 1px solid var(--color-border);
+    }
+}
+.section-wrapper {
+    display: grid;
+    gap: var(--space-3);
+    @media #{g.$mq-lg} {
+        grid-template-columns: 1fr 1.5fr;
+    }
 }
 .section-header {
-    display: flex;
-    align-items: center;
-    gap: var(--space-3);
     h2 {
         margin: 0;
-    }
-    &::after {
-        content: '';
-        background-color: var(--color-border);
-        height: 1px;
-        flex: 1;
+        font-size: var(--font-size-400);
     }
 }

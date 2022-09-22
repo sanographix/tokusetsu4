@@ -1,21 +1,19 @@
 @use "../global" as g;
 
 .track-table {
-    max-width: var(--col-width-sm);
-    margin: auto;
     display: grid;
-    justify-content: center;
     gap: var(--space-3);
 }
 .track-tr {
     counter-increment: list;
     display: grid;
     grid-template-columns: auto 1fr;
-    gap: var(--space-3);
+    gap: var(--space-2);
 }
 .track-th {
     font-size: var(--font-size-200);
     color: var(--color-text-highlight);
+    min-width: 1.5em;
     &::before {
         content: counter(list);
     }

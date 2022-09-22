@@ -1,8 +1,11 @@
 @use "../global" as g;
 
 .about-content {
-    margin: auto;
-    @media #{g.$mq-md} {
-        width: var(--col-width-sm);
+
+    .about {
+        margin: 0;
+        &:not(:first-child) {
+            margin-top: var(--space-4);
+        }
     }
 }
