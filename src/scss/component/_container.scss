@@ -2,8 +2,14 @@
 
 .container {
     @include g.container();
-    padding: var(--space-4);
     position: relative;
+    padding: var(--space-4) var(--space-3);
+    // マスク有効時
+    .is-bgMask-enabled & {
+        @media #{g.$mq-md} {
+            padding: var(--space-5);
+        }
+    }
 }
 
 .containerMask {
@@ -18,3 +24,4 @@
 .container-inner {
     position: relative;
 }
+

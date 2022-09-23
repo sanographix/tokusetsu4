@@ -198,9 +198,12 @@ function csv_array(data) {
   // Background Mask Opacity
   try {
     const valBackgroundMaskOpacity = array.filter((value) => value.option === 'Background Mask Opacity')[0].value1;
-    const domContainer = document.querySelector('.js-containerMask');
-    if (valBackgroundMaskOpacity != '') {
-      domContainer.style.opacity = valBackgroundMaskOpacity;
+    // 有効時
+    if (valBackgroundMaskOpacity == '✅') {
+      const domContainer = document.querySelector('.js-containerMask');
+      const valBackgroundMaskOpacityValue = array.filter((value) => value.option === 'Background Mask Opacity')[0].value2;
+      domContainer.style.opacity = valBackgroundMaskOpacityValue;
+      document.body.classList.add('is-bgMask-enabled');
     }
   } catch(error) {
     console.error('Error: Background mask opacity');
