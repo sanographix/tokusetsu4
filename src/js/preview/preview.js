@@ -324,6 +324,24 @@ function csv_array(data) {
     console.error('Error: Store');
   }
 
+  /////////////////////////////////////
+  // -Embedded Players-
+
+  // YouTube
+  try {
+    const domYouTubePlayer = document.getElementById('youtube-embed');
+    const valPlayerYouTube = array.filter((value) => value.option === 'Player (YouTube)')[0].value2;
+    if (valPlayerYouTube != '') {
+      domYouTubePlayer.setAttribute(
+        'src',
+        'https://www.youtube.com/embed/' + valPlayerYouTube
+      );
+    } else {
+      domYouTubePlayer.remove();
+    }
+  } catch(error) {
+    console.error('Error: External Player');
+  }
 
   /////////////////////////////////////
   // -About-
