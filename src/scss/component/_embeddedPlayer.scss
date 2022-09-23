@@ -2,7 +2,9 @@
 
 .embeddedPlayer-wrapper {
     max-width: 700px;
-    margin: auto;
+    margin: var(--space-5) auto;
+    display: grid;
+    gap: var(--space-4);
 }
 .embeddedPlayer {
     position: relative;

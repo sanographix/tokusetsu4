@@ -327,6 +327,35 @@ function csv_array(data) {
   /////////////////////////////////////
   // -Embedded Players-
 
+  // SoundCloud
+  try {
+    const domSoundCloudPlayer = document.getElementById('soundcloud-embed');
+    const valPlayerSoundCloud = array.filter((value) => value.option === 'Player (SoundCloud)')[0].value2;
+    const soundCloudType = array.filter((value) => value.option === 'Player (SoundCloud)')[0].value1;
+    if (valPlayerSoundCloud != '') {
+      switch (soundCloudType) {
+        case 'Track':
+          domSoundCloudPlayer.setAttribute(
+            'src',
+            'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + valPlayerSoundCloud + '&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true'
+          );
+          break;
+        case 'Playlist':
+          domSoundCloudPlayer.setAttribute(
+            'src',
+            'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/' + valPlayerSoundCloud + '&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true'
+          );
+          break;
+        default:
+          break;
+      }
+    } else {
+      domSoundCloudPlayer.remove();
+    }
+  } catch(error) {
+    console.error('Error: SoundCloud Player');
+  }
+
   // YouTube
   try {
     const domYouTubePlayer = document.getElementById('youtube-embed');
@@ -340,7 +369,7 @@ function csv_array(data) {
       domYouTubePlayer.remove();
     }
   } catch(error) {
-    console.error('Error: External Player');
+    console.error('Error: YouTube Player');
   }
 
   /////////////////////////////////////
