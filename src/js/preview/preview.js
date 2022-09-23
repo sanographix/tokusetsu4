@@ -332,7 +332,7 @@ function csv_array(data) {
     const domYouTubePlayer = document.getElementById('youtube-embed');
     const valPlayerYouTube = array.filter((value) => value.option === 'Player (YouTube)')[0].value2;
     if (valPlayerYouTube != '') {
-      domYouTubePlayer.setAttribute(
+      domYouTubePlayer.querySelector('.js-embedded-player').setAttribute(
         'src',
         'https://www.youtube.com/embed/' + valPlayerYouTube
       );
