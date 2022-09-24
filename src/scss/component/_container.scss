@@ -5,14 +5,7 @@
     position: relative;
     padding: var(--space-4) var(--space-3);
     @media #{g.$mq-md} {
-        padding-left: 0;
-        padding-right: 0;
-    }
-    // マスク有効時
-    .is-bgMask-enabled & {
-        @media #{g.$mq-md} {
-            padding: var(--space-5);
-        }
+        padding: var(--space-5);
     }
 }
 
@@ -22,7 +15,10 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--color-bg);
+    // マスク有効時
+    .is-bgMask-enabled & {
+        background-color: var(--color-bg-content);
+    }
 }
 
 .container-inner {

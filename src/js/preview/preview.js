@@ -79,6 +79,16 @@ function csv_array(data) {
   /////////////////////////////////////
   // -Design-
 
+  // Utils
+  // 文字色（白・黒）を背景色のカラーコードから判定する関数
+  // Theme, Accent Color で使用
+  function blackOrWhite ( hexcolor ) {
+    var r = parseInt( hexcolor.substr( 1, 2 ), 16 ) ;
+    var g = parseInt( hexcolor.substr( 3, 2 ), 16 ) ;
+    var b = parseInt( hexcolor.substr( 5, 2 ), 16 ) ;
+    return ( ( ( (r * 299) + (g * 587) + (b * 114) ) / 1000 ) < 128 ) ? 'white' : 'black' ;
+  }
+
   // Background Color
   try {
     var valBackgroundColor = array.filter((value) => value.option === 'Background Color (Hex)')[0].value1;
@@ -89,34 +99,6 @@ function csv_array(data) {
   } catch(error) {
     console.error('Error: background-color');
   }
-
-  // 文字色（白・黒）を背景色のカラーコードから判定する関数
-  // Theme, Accent Color で使用
-  function blackOrWhite ( hexcolor ) {
-    var r = parseInt( hexcolor.substr( 1, 2 ), 16 ) ;
-    var g = parseInt( hexcolor.substr( 3, 2 ), 16 ) ;
-    var b = parseInt( hexcolor.substr( 5, 2 ), 16 ) ;
-    return ( ( ( (r * 299) + (g * 587) + (b * 114) ) / 1000 ) < 128 ) ? 'white' : 'black' ;
-  }
-
-  // Theme
-  try {
-    // 文字色（白・黒）を背景色のカラーコードから判定
-    var valThemeTextColor = blackOrWhite( valBackgroundColor );
-    switch (valThemeTextColor) {
-      case 'black':
-        document.documentElement.setAttribute('data-theme', 'Light');
-        break;
-      case 'white':
-        document.documentElement.setAttribute('data-theme', 'Dark');
-        break;
-      default:
-        break;
-    }
-  } catch(error) {
-    console.error('Error: theme');
-  }
-
 
   // Accent Color
   try {
@@ -195,19 +177,42 @@ function csv_array(data) {
     console.error('Error: Background Image');
   }
 
-  // Background Mask Opacity
+  // Content Background Color(Hex)
   try {
-    const valBackgroundMaskOpacity = array.filter((value) => value.option === 'Background Mask Opacity')[0].value1;
+    const optContentBackground = array.filter((value) => value.option === 'Content Background Color(Hex)');
+    const valContentBackground = optContentBackground[0].value1;
+    const valContentBackgroundOpacity = optContentBackground[0].value3;
+    // テーマカラー判定で使うので const ではなく var
+    var valContentBackgroundColor = optContentBackground[0].value2;
     // 有効時
-    if (valBackgroundMaskOpacity == '✅') {
-      const domContainer = document.querySelector('.js-containerMask');
-      const valBackgroundMaskOpacityValue = array.filter((value) => value.option === 'Background Mask Opacity')[0].value2;
-      domContainer.style.opacity = valBackgroundMaskOpacityValue;
+    if (valContentBackground == '✅') {
+      document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-bg-content:' + valContentBackgroundColor + '}</style>');
+      const domContentBackground = document.querySelector('.js-containerMask');
+      domContentBackground.style.opacity = valContentBackgroundOpacity;
       document.body.classList.add('is-bgMask-enabled');
     }
   } catch(error) {
     console.error('Error: Background mask opacity');
   }
+
+  // Theme
+  try {
+    // 文字色（白・黒）を背景色のカラーコードから判定
+    var valThemeTextColor = blackOrWhite( valContentBackgroundColor );
+    switch (valThemeTextColor) {
+      case 'black':
+        document.documentElement.setAttribute('data-theme', 'Light');
+        break;
+      case 'white':
+        document.documentElement.setAttribute('data-theme', 'Dark');
+        break;
+      default:
+        break;
+    }
+  } catch(error) {
+    console.error('Error: theme');
+  }
+
 
   /////////////////////////////////////
   // -Header-
