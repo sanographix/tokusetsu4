@@ -215,7 +215,21 @@ function csv_array(data) {
 
 
   /////////////////////////////////////
-  // -Header-
+  // -Cover-
+
+  try {
+    const optCover = array.filter((value) => value.option === 'Cover');
+    const valCoverSrc = optCover[0].value1;
+    const domCover = document.querySelector('.js-cover-img');
+    // 画像URL
+    if (valCoverSrc != '') {
+      domCover.setAttribute('src', valCoverSrc);
+    } else {
+      document.querySelector('.js-cover').remove();
+    }
+  } catch(error) {
+    console.error('Error: Cover');
+  }
 
 
   /////////////////////////////////////
