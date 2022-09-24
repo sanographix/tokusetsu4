@@ -22,3 +22,10 @@
     font-size: var(--font-size-75);
     line-height: var(--line-height-xs);
 }
+.organization-logo {
+    margin: 0 0 var(--space-4);
+    .organization-logo-img {
+        display: block;
+        max-width: 250px;
+    }
+}
