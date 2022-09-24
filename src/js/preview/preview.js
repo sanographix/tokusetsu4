@@ -216,6 +216,23 @@ function csv_array(data) {
   /////////////////////////////////////
   // -Overview-
 
+  // Art
+  // Background Image
+  try {
+    const optArtImage = array.filter((value) => value.option === 'Art Image');
+    const valArtImageSrc = optArtImage[0].value1;
+    const domArtImage = document.querySelector('.js-art-img');
+    // 画像URL
+    if (valArtImageSrc != '') {
+      domArtImage.setAttribute('src', valArtImageSrc);
+      document.getElementById('art-empty').remove();
+    } else {
+      document.getElementById('art').remove();
+    }
+  } catch(error) {
+    console.error('Error: Art Image');
+  }
+
   // Work Title
   try {
     const domTitle = document.querySelector('.js-title');
