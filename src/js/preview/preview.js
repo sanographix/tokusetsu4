@@ -536,6 +536,7 @@ function csv_array(data) {
     // 画像URL
     if (valOrganizationLogoSrc != '') {
       domOrganizationLogo.setAttribute('src', valOrganizationLogoSrc);
+      domOrganizationLogo.setAttribute('alt', valOrganization);
     } else {
       domOrganizationLogo.remove();
       document.querySelector('.js-organization-logo').textContent = valOrganization;
