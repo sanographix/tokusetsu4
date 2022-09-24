@@ -1,0 +1,10 @@
+.organization-link {
+    border: 1px solid var(--color-border-highlight);
+    color: var(--color-text-highlight);
+    text-decoration: none;
+    display: inline-block;
+    padding: var(--space-1) var(--space-2);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-75);
+    line-height: var(--line-height-xs);
+}

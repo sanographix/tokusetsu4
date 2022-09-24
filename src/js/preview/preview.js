@@ -446,6 +446,10 @@ function csv_array(data) {
     }
     domGallery.remove(); // コピー元を削除
     domGalleryLightbox.remove(); // コピー元を削除
+    // 空欄ならHTMLからセクションごと非表示
+    if (optGallery[0].value1 == '') {
+      document.getElementById('gallery').remove();
+    }
   } catch(error) {
     console.error('Error: Gallery');
   }
@@ -521,5 +525,31 @@ function csv_array(data) {
   } catch(error) {
     console.error('Error: Member');
   }
+
+  /////////////////////////////////////
+  // -Organization-
+
+  // Organization Links
+  try {
+    const domOrganizationLinkWrap = document.querySelector('.js-organization-link-wrap');
+    const domOrganizationLink = document.querySelector('.js-organization-link'); // コピー元を取得
+    const optOrganizationLink = array.filter((value) => value.option === 'Organization Link');
+
+    for (let i = 0; i < optOrganizationLink.length; i++) {
+      const domOrganizationLinkClone = domOrganizationLink.cloneNode(true);
+      domOrganizationLinkClone.setAttribute('href', optOrganizationLink[i].value2);
+      domOrganizationLinkClone.querySelector('.js-organization-link-label').textContent = optOrganizationLink[i].value1;
+
+      domOrganizationLinkWrap.appendChild(domOrganizationLinkClone);
+    }
+    domOrganizationLink.remove(); // コピー元を削除
+    // 空欄ならHTMLから非表示
+    if (optOrganizationLink[0].value1 == '') {
+      domOrganizationLinkWrap.remove();
+    }
+  } catch(error) {
+    console.error('Error: Organization Links');
+  }
+
 
 }
