@@ -41,7 +41,7 @@ function csv_array(data) {
   const optOrganization = array.filter((value) => value.option === 'Organization Name');
 
   const valWorkTitle = optWorkTitle[0].value1;
-  const valOrganization = optOrganization[0].value1;
+  var valOrganization = optOrganization[0].value1;
 
   // エンコードされたイベントタイトル（Googleカレンダー追加ボタンに使う）
   const encodedWorkTitle = encodeURIComponent(valWorkTitle);
@@ -221,8 +221,7 @@ function csv_array(data) {
   /////////////////////////////////////
   // -Overview-
 
-  // Art
-  // Background Image
+  // Art Image
   try {
     const optArtImage = array.filter((value) => value.option === 'Art Image');
     const valArtImageSrc = optArtImage[0].value1;
@@ -528,6 +527,22 @@ function csv_array(data) {
 
   /////////////////////////////////////
   // -Organization-
+
+  // Organization Logo
+  try {
+    const optOrganizationLogo = array.filter((value) => value.option === 'Organization Logo');
+    const valOrganizationLogoSrc = optOrganizationLogo[0].value1;
+    const domOrganizationLogo = document.querySelector('.js-organization-logo-img');
+    // 画像URL
+    if (valOrganizationLogoSrc != '') {
+      domOrganizationLogo.setAttribute('src', valOrganizationLogoSrc);
+    } else {
+      domOrganizationLogo.remove();
+      document.querySelector('.js-organization-logo').textContent = valOrganization;
+    }
+  } catch(error) {
+    console.error('Error: Organization Logo');
+  }
 
   // Organization Links
   try {
