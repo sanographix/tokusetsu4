@@ -599,5 +599,34 @@ function csv_array(data) {
     console.error('Error: Organization Links');
   }
 
+  /////////////////////////////////////
+  // -Footer-
+
+  /////////////////////////////////////
+  // -Download-
+
+  // クエリパラメータが?prebuild=trueのときテンプレートをダウンロード
+  const urlParam = location.search;
+  if (urlParam === "?prebuild=true") {
+    // プレビュー用バナーを消す
+    document.querySelector('.js-prebuild').remove();
+    // 検索避けない設定の場合noindex消す
+    const valRobots = array.filter((value) => value.option === 'Hide on Search Results')[0].value1;
+    if (valRobots == '-') {
+      document.getElementById('meta-robots').remove();
+    }
+    // jsでの書き換えがロードしきってからDOMを取得する
+    window.addEventListener("load", function () {
+      let snapshot = new XMLSerializer().serializeToString(document);
+      // 不要な要素をhtml文字列から抜き取る
+      snapshot = snapshot.replace('<script src="_src/preview.js"></script>', '');
+      // ダウンロード
+      let blob = new Blob([snapshot], { type: "text/plan" });
+      let link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = "index.html";
+      link.click();
+    });
+  }
 
 }
