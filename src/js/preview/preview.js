@@ -360,6 +360,24 @@ function csv_array(data) {
   }
 
   /////////////////////////////////////
+  // -Share Buttons-
+  try {
+    const domShareTwitter = document.querySelector('.js-share-tw');
+    const domShareFacebook = document.querySelector('.js-share-fb');
+    let twitterLink = 'https://twitter.com/share?text=' + encodedSiteTitle + '&url=' + siteUrl;
+    // ハッシュタグが設定されていればシェアURLに含める
+    if (valHashtag != '') {
+      twitterLink += '&hashtags=' + valHashtag;
+    }
+    domShareTwitter.setAttribute('href', twitterLink);
+    const facebookLink = 'http://www.facebook.com/sharer.php?u=' + siteUrl;
+    domShareFacebook.setAttribute('href', facebookLink);
+
+  } catch(error) {
+    console.error('Error: Share buttons');
+  }
+
+  /////////////////////////////////////
   // -Embedded Players-
 
   // SoundCloud
