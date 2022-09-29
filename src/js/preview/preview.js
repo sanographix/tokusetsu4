@@ -601,6 +601,20 @@ function csv_array(data) {
 
   /////////////////////////////////////
   // -Footer-
+  document.querySelector('.js-footer-workTitle').textContent = valWorkTitle;
+  // footer-text (option)
+  try {
+    const domFooterText = document.querySelector('.js-footer-text');
+    const optFooterText = array.filter((value) => value.option === 'Footer Text');
+    const valFooterText = optFooterText[0].value1;
+    if (valFooterText != '') {
+      domFooterText.textContent = valFooterText
+    } else {
+      domFooterText.remove();
+    }
+  } catch(error) {
+    console.error('Error: Footer text');
+  }
 
   /////////////////////////////////////
   // -Download-

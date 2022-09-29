@@ -17,9 +17,13 @@
     }
 }
 .footer-content {
-    line-height: var(--line-height-xs);
+    line-height: var(--line-height-sm);
+    text-align: center;
+    @media #{g.$mq-md} {
+        text-align: left;
+    }
 }
-.footer-eventTitle {
+.footer-workTitle {
     font-weight: bold;
     font-size: var(--font-size-75);
     text-decoration: none;
