@@ -50,6 +50,18 @@
         color: var(--color-text-secondary);
     }
 }
+.footer-tokusetsu-logo {
+    svg {
+        width: 120px;
+        height: 10px;
+        fill: currentColor;
+        display: inline-block;
+        path,
+        polygon {
+            fill: currentColor;
+        }
+    }
+}
 .theme-info-install {
     flex-shrink: 0;
 }

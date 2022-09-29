@@ -49,10 +49,17 @@
     margin-top: var(--space-8);
     text-align: center;
     .setup-footer-logo {
+        a {
+            color: inherit;
+        }
         svg {
             opacity: .5;
-            width: 136px;
-            height: 58px;
+            width: 160px;
+            fill: currentColor;
+            path,
+            polygon {
+                fill: currentColor;
+            }
         }
         a:hover {
             svg {
