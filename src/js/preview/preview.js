@@ -68,13 +68,59 @@ function csv_array(data) {
     console.error('Error: favicon');
   }
 
+  // Canonical
+  try {
+    const domCanonical = document.getElementById('canonical');
+    domCanonical.href = siteUrl;
+  } catch(error) {
+    console.error('Error: canonical');
+  }
+
+  // og-image
+  const optOgImage = array.filter((value) => value.option === 'Share Image');
+  const valOgImage = optOgImage[0].value1;
+
   // og-description
   // About の1行目の値を利用する
   const optAbout = array.filter((value) => value.option === 'About');
   const valAbout = optAbout[0].value1;
 
-
-
+  // OGP
+  try {
+    const OGP = [
+      {
+        'property': 'og:description',
+        'content': valAbout
+      }, {
+        'property': 'og:title',
+        'content': siteTitle
+      }, {
+        'property': 'og:url',
+        'content': siteUrl
+      }, {
+        'name': 'og:image',
+        'content': siteUrl + valOgImage
+      }, {
+        'name': 'twitter:title',
+        'content': siteTitle
+      }, {
+        'name': 'twitter:description',
+        'content': valAbout
+      }, {
+        'name': 'twitter:image',
+        'content': siteUrl + valOgImage
+      }
+    ]
+    for (let i = 0; i < OGP.length; i++) {
+      const metaTag = document.createElement('meta');
+      for (let prop in OGP[i]) {
+          metaTag.setAttribute(prop, OGP[i][prop]);
+      }
+      document.head.appendChild(metaTag);
+    }
+  } catch(error) {
+    console.error('Error: OGP');
+  }
 
   /////////////////////////////////////
   // -Design-
@@ -494,6 +540,10 @@ function csv_array(data) {
     const optTracklistHeading = array.filter((value) => value.option === 'Tracklist Heading');
     const valTracklistHeading = optTracklistHeading[0].value1;
     domTracklistHeading.textContent = valTracklistHeading;
+    // 空欄ならHTMLからセクションごと非表示
+    if (valTracklistHeading == '') {
+      document.getElementById('tracklist').remove();
+    }
   } catch(error) {
     console.error('Error: Tracklist heading');
   }
@@ -505,14 +555,18 @@ function csv_array(data) {
     const optTrack = array.filter((value) => value.option === 'Track');
     for (let i = 0; i < optTrack.length; i++) {
       const domTrackClone = domTrack.cloneNode(true);
+      // track title
       domTrackClone.querySelector('.js-track-name').textContent = optTrack[i].value1;
-      // option
+      // track description
       if (optTrack[i].value2 != '') {
         domTrackClone.querySelector('.js-track-description').textContent = optTrack[i].value2;
       } else {
         domTrackClone.querySelector('.js-track-description').remove();
       }
-      domTrackWrap.appendChild(domTrackClone);
+      // track titleが空欄でなければ配置
+      if (optTrack[i].value1 != '') {
+        domTrackWrap.appendChild(domTrackClone);
+      }
     }
     domTrack.remove(); // コピー元を削除
   } catch(error) {
