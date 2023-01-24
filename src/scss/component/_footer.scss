@@ -1,7 +1,7 @@
 @use "../global" as g;
 
 .footer {
-    margin: var(--space-7) auto var(--space-4);
+    margin: var(--space-7) auto 0;
     border-top: 1px solid var(--color-border);
     padding-top: var(--space-4);
 }
