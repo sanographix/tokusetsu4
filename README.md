@@ -1,11 +1,11 @@
 <h1 align="center">
-Kitekure
+Tokusetsu 4
 </h1>
-<p align="center">Free website builder designed for DJs and organizers</p>
+<p align="center">The most doujin-friently landing page builder</p>
 <h2 align="center">
-  <a href="http://kitekure.sanographix.net/">Introduction</a>
+  <a href="https://tokusetsu4.sanographix.net/">Introduction</a>
   <span> · </span>
-  <a href="https://sngrpx.gitbook.io/kitekure">Tutorial</a>
+  <a href="https://sanographix.gitbook.io/tokusetsu4">Tutorial</a>
 </h2>
 
 # For developers
@@ -13,8 +13,8 @@ Kitekure
 ## Set up
 
 ```
-$ git clone git@github.com:sanographix/kitekure.git kitekure
-$ cd kitekure
+$ git clone git@github.com:sanographix/tokusetsu4.git tokusetsu4
+$ cd tokusetsu4
 $ npm install
 ```
 
@@ -33,7 +33,6 @@ $ npm run build
 ```
 
 Assets will output to `build/`.
-
 
 # Author
 
