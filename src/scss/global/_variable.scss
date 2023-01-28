@@ -36,8 +36,9 @@
     --col-width: 90%;
     --col-width-sm: 512px;
     --col-width-md: 1080px;
-    --col-width-lg: 1200px;
+    --col-width-lg: 1280px;
     --col-width-xl: 1400px;
+    --col-width-2xl: 1600px;
 
     --col-space: 5vw;
 
@@ -123,6 +124,6 @@ $mq-xxl: "(min-width: 1600px)";
         margin-left: auto;
         margin-right: auto;
         width: var(--col-width);
-        max-width: var(--col-width-md);
+        max-width: var(--col-width-lg);
     }
 }

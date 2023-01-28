@@ -5,7 +5,9 @@
     position: relative;
     padding: var(--space-4) var(--space-3);
     @media #{g.$mq-md} {
-        padding: var(--space-5);
+        margin-top: var(--space-6);
+        margin-bottom: var(--space-6);
+        padding: var(--space-6);
     }
 }
 
@@ -15,6 +17,7 @@
     left: 0;
     width: 100%;
     height: 100%;
+    border-radius: var(--border-radius-base);
     // マスク有効時
     .is-bgMask-enabled & {
         background-color: var(--color-bg-content);
