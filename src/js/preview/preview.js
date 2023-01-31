@@ -326,7 +326,7 @@ function csv_array(data) {
   // Release Date
   try {
     const domReleaseDate = document.querySelector('.js-releaseDate-content');
-    const optReleaseDate = array.filter((value) => value.option === 'Release Date (Local Time)');
+    const optReleaseDate = array.filter((value) => value.option === 'Release Date');
     const valReleaseDate = optReleaseDate[0].value1;
     domReleaseDate.textContent = valReleaseDate;
   } catch(error) {
