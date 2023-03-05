@@ -1,5 +1,4 @@
-<% pageId = "preview"; %>
-<%- include('../_partial/_header') %>
+<% pageId = "preview"; %> <%- include('../_partial/_header') %>
 
 <header class="cover js-cover">
   <img src="" alt="" class="js-cover-img" />
@@ -8,7 +7,6 @@
 <div class="container">
   <div class="containerMask js-containerMask"></div>
   <div class="container-inner">
-
     <section class="overview">
       <div class="overview-art">
         <div
@@ -20,23 +18,29 @@
         >
           <img src="" alt="Album Art" class="art-img js-art-img" />
         </div>
-        <div id="art-empty" class="art-empty"><span class="label">NOW PRINTING</span></div>
+        <div id="art-empty" class="art-empty">
+          <span class="label">NOW PRINTING</span>
+        </div>
       </div>
       <div class="overview-main">
         <h2 class="overview-title js-title">Header Title</h2>
         <h3 class="organization-name js-organizationName">Organization Name</h3>
         <div class="overview-table">
           <dt class="overview-label">Specification</dt>
-          <dd class="overview-content js-specification-content">Specification</dd>
+          <dd class="overview-content js-specification-content">
+            Specification
+          </dd>
           <dt class="overview-label">Release Date</dt>
           <dd class="overview-content js-releaseDate-content">Release Date</dd>
-          <dt class="overview-label">Location</dt>
+          <dt class="overview-label js-overview-label">Location</dt>
           <dd class="overview-content js-location-content">Location</dd>
           <dt class="overview-label">Price</dt>
           <dd class="overview-content js-price-content">Price</dd>
           <dt class="overview-label js-hashtag-label">Hashtag</dt>
           <dd class="overview-content js-hashtag">
-            <a href="https://twitter.com/hashtag/" class="js-hashtag-link">#hashtag</a>
+            <a href="https://twitter.com/hashtag/" class="js-hashtag-link"
+              >#hashtag</a
+            >
           </dd>
         </div>
       </div>
@@ -49,10 +53,43 @@
     </section>
     <nav class="nav-share">
       <a href="" class="share-btn share-tw js-share-tw">
-        <svg xmlns="http://www.w3.org/2000/svg" width="19.388" height="19" title="twitter" viewBox="0 0 19.388 19"><g transform="translate(0 -0.2)"><path d="M6.089,32.829a11.312,11.312,0,0,0,11.33-11.422c0-.168,0-.337-.015-.521a8.259,8.259,0,0,0,1.984-2.067,7.945,7.945,0,0,1-2.287.628,4.05,4.05,0,0,0,1.757-2.22,7.945,7.945,0,0,1-2.529.965,3.938,3.938,0,0,0-4.782-.811,4.027,4.027,0,0,0-1.988,4.47,11.274,11.274,0,0,1-8.2-4.211A4.038,4.038,0,0,0,2.59,23a3.711,3.711,0,0,1-1.8-.5v.061A4,4,0,0,0,3.968,26.49a3.927,3.927,0,0,1-1.787.077,3.959,3.959,0,0,0,3.7,2.787A7.822,7.822,0,0,1,.939,31.068,6.594,6.594,0,0,1,0,31.007a11.061,11.061,0,0,0,6.089,1.822" transform="translate(0 -14.48)" fill="#fff"></path></g></svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="19.388"
+          height="19"
+          title="twitter"
+          viewBox="0 0 19.388 19"
+        >
+          <g transform="translate(0 -0.2)">
+            <path
+              d="M6.089,32.829a11.312,11.312,0,0,0,11.33-11.422c0-.168,0-.337-.015-.521a8.259,8.259,0,0,0,1.984-2.067,7.945,7.945,0,0,1-2.287.628,4.05,4.05,0,0,0,1.757-2.22,7.945,7.945,0,0,1-2.529.965,3.938,3.938,0,0,0-4.782-.811,4.027,4.027,0,0,0-1.988,4.47,11.274,11.274,0,0,1-8.2-4.211A4.038,4.038,0,0,0,2.59,23a3.711,3.711,0,0,1-1.8-.5v.061A4,4,0,0,0,3.968,26.49a3.927,3.927,0,0,1-1.787.077,3.959,3.959,0,0,0,3.7,2.787A7.822,7.822,0,0,1,.939,31.068,6.594,6.594,0,0,1,0,31.007a11.061,11.061,0,0,0,6.089,1.822"
+              transform="translate(0 -14.48)"
+              fill="#fff"
+            ></path>
+          </g>
+        </svg>
       </a>
       <a href="" class="share-btn share-fb js-share-fb">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" title="Facebook" viewBox="0 0 20 20.002"><g transform="translate(0.004 0.016)"><path d="M20,9.952a10,10,0,1,0-11.562,9.84v-6.96H5.9V9.952H8.433v-2.2a3.53,3.53,0,0,1,3.781-3.877,15.96,15.96,0,0,1,2.234.187v2.46H13.183a1.441,1.441,0,0,0-1.625,1.557V9.952h2.781l-.453,2.881H11.558v6.96A9.976,9.976,0,0,0,20,9.952Z" transform="translate(0)" fill="#fff"></path><path d="M49.243,35.019l.649-3.223H45.906V29.7c0-.889.56-1.742,2.329-1.742h1.814V25.209a29.162,29.162,0,0,0-3.2-.209c-3.269,0-5.419,1.551-5.419,4.338V31.8H37.8v3.223h3.628v7.788a18.058,18.058,0,0,0,4.479,0V35.019Z" transform="translate(-33.807 -22.96)" fill="none"></path></g></svg>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          title="Facebook"
+          viewBox="0 0 20 20.002"
+        >
+          <g transform="translate(0.004 0.016)">
+            <path
+              d="M20,9.952a10,10,0,1,0-11.562,9.84v-6.96H5.9V9.952H8.433v-2.2a3.53,3.53,0,0,1,3.781-3.877,15.96,15.96,0,0,1,2.234.187v2.46H13.183a1.441,1.441,0,0,0-1.625,1.557V9.952h2.781l-.453,2.881H11.558v6.96A9.976,9.976,0,0,0,20,9.952Z"
+              transform="translate(0)"
+              fill="#fff"
+            ></path>
+            <path
+              d="M49.243,35.019l.649-3.223H45.906V29.7c0-.889.56-1.742,2.329-1.742h1.814V25.209a29.162,29.162,0,0,0-3.2-.209c-3.269,0-5.419,1.551-5.419,4.338V31.8H37.8v3.223h3.628v7.788a18.058,18.058,0,0,0,4.479,0V35.019Z"
+              transform="translate(-33.807 -22.96)"
+              fill="none"
+            ></path>
+          </g>
+        </svg>
       </a>
     </nav>
 
@@ -100,19 +137,32 @@
           <h2>Gallery</h2>
         </header>
         <ul class="gallery-items js-dom-gallery-wrap">
-          <li class="gallery-item js-gallery-item js-dom-gallery" data-index="1">
-            <img src="" alt="" class="gallery-img js-gallery-img js-dom-gallery-img" />
+          <li
+            class="gallery-item js-gallery-item js-dom-gallery"
+            data-index="1"
+          >
+            <img
+              src=""
+              alt=""
+              class="gallery-img js-gallery-img js-dom-gallery-img"
+            />
           </li>
         </ul>
       </div>
 
       <%# lightbox %>
       <div class="js-dom-gallery-lightbox-wrap">
-        <div class="gallery-lightbox js-gallery-lightbox js-dom-gallery-lightbox" data-index="1">
-          <img src="" alt="" class="gallery-lightbox-image js-gallery-lightbox-image js-dom-gallery-lightbox-img">
+        <div
+          class="gallery-lightbox js-gallery-lightbox js-dom-gallery-lightbox"
+          data-index="1"
+        >
+          <img
+            src=""
+            alt=""
+            class="gallery-lightbox-image js-gallery-lightbox-image js-dom-gallery-lightbox-img"
+          />
         </div>
       </div>
-
     </section>
     <section class="section section-tracklist" id="tracklist">
       <div class="section-wrapper">
@@ -124,7 +174,9 @@
             <div class="track-th js-track-time"></div>
             <div class="track-td">
               <h4 class="track-heading js-track-name">Track name</h4>
-              <div class="track-description js-track-description">Track description</div>
+              <div class="track-description js-track-description">
+                Track description
+              </div>
             </div>
           </div>
         </div>
@@ -137,9 +189,7 @@
         </header>
         <div class="member-wrap js-member-wrap">
           <div class="member js-member">
-            <div class="member-role js-member-role">
-              Role
-            </div>
+            <div class="member-role js-member-role">Role</div>
             <div class="member-content">
               <span class="member-name js-member-name">Member name</span>
               <nav class="member-link js-member-link">
@@ -152,7 +202,11 @@
     </section>
     <div class="section-organization">
       <h3 class="organization-logo js-organization-logo">
-        <img src="" alt="" class="organization-logo-img js-organization-logo-img" />
+        <img
+          src=""
+          alt=""
+          class="organization-logo-img js-organization-logo-img"
+        />
       </h3>
       <nav class="organization-links js-organization-link-wrap">
         <a href="" class="organization-link js-organization-link">
@@ -163,22 +217,38 @@
     <footer class="footer">
       <div class="footer-wrapper">
         <div class="footer-content">
-          <a href="/" class="footer-workTitle js-footer-workTitle">
-          </a>
+          <a href="/" class="footer-workTitle js-footer-workTitle"> </a>
           <p class="footer-text js-footer-text"></p>
         </div>
         <div class="theme-info">
           <div class="theme-info-label">
             <p>
               Made with
-              <a href="https://tokusetsu4.sanographix.net" target="_blank" rel="noopener">
-                <span class="footer-tokusetsu-logo"><%- include ('../_partial/_logo') %></span>
+              <a
+                href="https://tokusetsu4.sanographix.net"
+                target="_blank"
+                rel="noopener"
+              >
+                <span class="footer-tokusetsu-logo"
+                  ><%- include ('../_partial/_logo') %></span
+                >
               </a>
             </p>
-            <p>Template designed by <a href="https://sanographix.net" target="_blank" rel="noopener">SANOGRAPHIX</a></p>
+            <p>
+              Template designed by
+              <a href="https://sanographix.net" target="_blank" rel="noopener"
+                >SANOGRAPHIX</a
+              >
+            </p>
           </div>
           <div class="theme-info-install">
-            <a href="https://tokusetsu4.sanographix.net" target="_blank" rel="noopener" class="install-btn">Learn More</a>
+            <a
+              href="https://tokusetsu4.sanographix.net"
+              target="_blank"
+              rel="noopener"
+              class="install-btn"
+              >Learn More</a
+            >
           </div>
         </div>
       </div>
@@ -192,12 +262,15 @@
     <div class="prebuild-content">
       <h1>Almost Done...!</h1>
       <p>
-        <strong>現在、プレビューを表示しています。</strong><br>
-        あと一息で公開できます！ ページをよく確認して、内容に間違いなければ公開用ファイルをダウンロードしてください。次のステップに進みましょう！
+        <strong>現在、プレビューを表示しています。</strong><br />
+        あと一息で公開できます！
+        ページをよく確認して、内容に間違いなければ公開用ファイルをダウンロードしてください。次のステップに進みましょう！
       </p>
     </div>
     <div class="prebuild-action">
-      <a href="/preview.html?prebuild=true" class="prebuild-download">👉 Download</a>
+      <a href="/preview.html?prebuild=true" class="prebuild-download"
+        >👉 Download</a
+      >
     </div>
   </div>
 </aside>

@@ -392,6 +392,10 @@ function csv_array(data) {
     const optLocation = array.filter((value) => value.option === "Location");
     const valLocation = optLocation[0].value1;
     domLocation.textContent = valLocation;
+    // 空欄ならHTMLから非表示
+    if (valLocation == "") {
+      document.querySelector(".js-overview-label").remove();
+    }
   } catch (error) {
     console.error("Error: Overview Location");
   }
