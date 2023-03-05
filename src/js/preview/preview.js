@@ -25,7 +25,16 @@ csv_data("../config.csv"); // csvのパス
 
 function csv_array(data) {
   const array = new CSV(data, {
-    header: ['option', 'value1', 'value2', 'value3', 'value4', 'value5', 'required', 'description'],
+    header: [
+      "option",
+      "value1",
+      "value2",
+      "value3",
+      "value4",
+      "value5",
+      "required",
+      "description",
+    ],
     cast: false,
   }).parse(); //配列を用意
 
@@ -37,8 +46,10 @@ function csv_array(data) {
   // -Basics-
 
   // Site Title
-  const optWorkTitle = array.filter((value) => value.option === 'Title');
-  const optOrganization = array.filter((value) => value.option === 'Organization Name');
+  const optWorkTitle = array.filter((value) => value.option === "Title");
+  const optOrganization = array.filter(
+    (value) => value.option === "Organization Name"
+  );
 
   const valWorkTitle = optWorkTitle[0].value1;
   var valOrganization = optOrganization[0].value1;
@@ -46,7 +57,7 @@ function csv_array(data) {
   // エンコードされたイベントタイトル（Googleカレンダー追加ボタンに使う）
   const encodedWorkTitle = encodeURIComponent(valWorkTitle);
 
-  const siteTitle = new String(valWorkTitle + ' | ' + valOrganization);
+  const siteTitle = new String(valWorkTitle + " | " + valOrganization);
   // エンコードされたタイトル（シェアボタンに使う）
   const encodedSiteTitle = encodeURIComponent(siteTitle);
 
@@ -56,70 +67,79 @@ function csv_array(data) {
   const siteUrl = `${location.protocol}//${location.hostname}/`;
 
   // Hashtag
-  const valHashtag = array.filter((value) => value.option === 'Hashtag')[0].value1;
+  const valHashtag = array.filter((value) => value.option === "Hashtag")[0]
+    .value1;
 
   // Favicon
   try {
-    const optFavicon = array.filter((value) => value.option === 'Site Icon (favicon)');
+    const optFavicon = array.filter(
+      (value) => value.option === "Site Icon (favicon)"
+    );
     const valFavicon = optFavicon[0].value1;
-    const domFavicon = document.getElementById('favicon');
+    const domFavicon = document.getElementById("favicon");
     domFavicon.href = valFavicon;
-  } catch(error) {
-    console.error('Error: favicon');
+  } catch (error) {
+    console.error("Error: favicon");
   }
 
   // Canonical
   try {
-    const domCanonical = document.getElementById('canonical');
+    const domCanonical = document.getElementById("canonical");
     domCanonical.href = siteUrl;
-  } catch(error) {
-    console.error('Error: canonical');
+  } catch (error) {
+    console.error("Error: canonical");
   }
 
   // og-image
-  const optOgImage = array.filter((value) => value.option === 'Share Image');
+  const optOgImage = array.filter((value) => value.option === "Share Image");
   const valOgImage = optOgImage[0].value1;
 
   // og-description
   // About の1行目の値を利用する
-  const optAbout = array.filter((value) => value.option === 'About');
+  const optAbout = array.filter((value) => value.option === "About");
   const valAbout = optAbout[0].value1;
 
   // OGP
   try {
     const OGP = [
       {
-        'property': 'og:description',
-        'content': valAbout
-      }, {
-        'property': 'og:title',
-        'content': siteTitle
-      }, {
-        'property': 'og:url',
-        'content': siteUrl
-      }, {
-        'property': 'og:image',
-        'content': siteUrl + valOgImage
-      }, {
-        'name': 'twitter:title',
-        'content': siteTitle
-      }, {
-        'name': 'twitter:description',
-        'content': valAbout
-      }, {
-        'name': 'twitter:image',
-        'content': siteUrl + valOgImage
-      }
-    ]
+        property: "og:description",
+        content: valAbout,
+      },
+      {
+        property: "og:title",
+        content: siteTitle,
+      },
+      {
+        property: "og:url",
+        content: siteUrl,
+      },
+      {
+        property: "og:image",
+        content: siteUrl + valOgImage,
+      },
+      {
+        name: "twitter:title",
+        content: siteTitle,
+      },
+      {
+        name: "twitter:description",
+        content: valAbout,
+      },
+      {
+        name: "twitter:image",
+        content: siteUrl + valOgImage,
+      },
+    ];
     for (let i = 0; i < OGP.length; i++) {
-      const metaTag = document.createElement('meta');
+      const metaTag = document.createElement("meta");
       for (let prop in OGP[i]) {
-          metaTag.setAttribute(prop, OGP[i][prop]);
+        metaTag.setAttribute(prop, OGP[i][prop]);
       }
       document.head.appendChild(metaTag);
     }
-  } catch(error) {
-    console.error('Error: OGP');
+  } catch (error) {
+    console.error("Error: OGP");
   }
 
   /////////////////////////////////////
@@ -128,299 +148,334 @@ function csv_array(data) {
   // Utils
   // 文字色（白・黒）を背景色のカラーコードから判定する関数
   // Theme, Accent Color で使用
-  function blackOrWhite ( hexcolor ) {
-    var r = parseInt( hexcolor.substr( 1, 2 ), 16 ) ;
-    var g = parseInt( hexcolor.substr( 3, 2 ), 16 ) ;
-    var b = parseInt( hexcolor.substr( 5, 2 ), 16 ) ;
-    return ( ( ( (r * 299) + (g * 587) + (b * 114) ) / 1000 ) < 128 ) ? 'white' : 'black' ;
+  function blackOrWhite(hexcolor) {
+    var r = parseInt(hexcolor.substr(1, 2), 16);
+    var g = parseInt(hexcolor.substr(3, 2), 16);
+    var b = parseInt(hexcolor.substr(5, 2), 16);
+    return (r * 299 + g * 587 + b * 114) / 1000 < 128 ? "white" : "black";
   }
 
   // Background Color
   try {
-    var valBackgroundColor = array.filter((value) => value.option === 'Background Color (Hex)')[0].value1;
-    if (valBackgroundColor != '') {
+    var valBackgroundColor = array.filter(
+      (value) => value.option === "Background Color (Hex)"
+    )[0].value1;
+    if (valBackgroundColor != "") {
       // 背景色を適用
-      document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-bg:' + valBackgroundColor + '}</style>');
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        "<style>:root{--color-bg:" + valBackgroundColor + "}</style>"
+      );
     }
-  } catch(error) {
-    console.error('Error: background-color');
+  } catch (error) {
+    console.error("Error: background-color");
   }
 
   // Accent Color
   try {
-    const valAccentColor = array.filter((value) => value.option === 'Accent Color (Hex)')[0].value1;
-    if (valAccentColor != '') {
+    const valAccentColor = array.filter(
+      (value) => value.option === "Accent Color (Hex)"
+    )[0].value1;
+    if (valAccentColor != "") {
       // アクセントカラーを適用
-      document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-primary:' + valAccentColor + '}</style>');
-      document.documentElement.setAttribute('data-accent-color', valAccentColor);
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        "<style>:root{--color-primary:" + valAccentColor + "}</style>"
+      );
+      document.documentElement.setAttribute(
+        "data-accent-color",
+        valAccentColor
+      );
       // metaタグに指定
-      const domThemeColor = document.getElementById('meta-theme-color');
+      const domThemeColor = document.getElementById("meta-theme-color");
       domThemeColor.content = valAccentColor;
 
-      const AccentColorText = blackOrWhite( valAccentColor ) ;
+      const AccentColorText = blackOrWhite(valAccentColor);
       switch (AccentColorText) {
-        case 'black':
-          document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-btn-primary-text: var(--color-black)}</style>');
+        case "black":
+          document.head.insertAdjacentHTML(
+            "beforeend",
+            "<style>:root{--color-btn-primary-text: var(--color-black)}</style>"
+          );
           break;
-        case 'white':
-          document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-btn-primary-text: var(--color-white)}</style>');
+        case "white":
+          document.head.insertAdjacentHTML(
+            "beforeend",
+            "<style>:root{--color-btn-primary-text: var(--color-white)}</style>"
+          );
           break;
         default:
           break;
       }
     }
-  } catch(error) {
-    console.error('Error: accent-color');
+  } catch (error) {
+    console.error("Error: accent-color");
   }
 
   // Background Image
   try {
-    const optBackgroundImage = array.filter((value) => value.option === 'Background Image');
+    const optBackgroundImage = array.filter(
+      (value) => value.option === "Background Image"
+    );
     const valBackgroundImageSrc = optBackgroundImage[0].value1;
     const valBackgroundImageRepeat = optBackgroundImage[0].value2;
     const valBackgroundImageAlign = optBackgroundImage[0].value3;
     const valBackgroundImageFixed = optBackgroundImage[0].value4;
     // 画像URL
-    if (valBackgroundImageSrc != '') {
-      document.body.style.backgroundImage = 'url(' + valBackgroundImageSrc + ')';
+    if (valBackgroundImageSrc != "") {
+      document.body.style.backgroundImage =
+        "url(" + valBackgroundImageSrc + ")";
     }
     // 画像の繰り返し
     switch (valBackgroundImageRepeat) {
-      case 'Both':
-        document.body.style.backgroundRepeat = 'repeat';
+      case "Both":
+        document.body.style.backgroundRepeat = "repeat";
         break;
-      case 'Horizontally':
-        document.body.style.backgroundRepeat = 'repeat-x';
+      case "Horizontally":
+        document.body.style.backgroundRepeat = "repeat-x";
         break;
-      case 'Vertically':
-        document.body.style.backgroundRepeat = 'repeat-y';
+      case "Vertically":
+        document.body.style.backgroundRepeat = "repeat-y";
         break;
-      case 'None':
-        document.body.style.backgroundRepeat = 'no-repeat';
+      case "None":
+        document.body.style.backgroundRepeat = "no-repeat";
         break;
       default:
-        document.body.style.backgroundRepeat = 'no-repeat';
+        document.body.style.backgroundRepeat = "no-repeat";
     }
     // 画像の位置
     switch (valBackgroundImageAlign) {
-      case 'Center':
-        document.body.style.backgroundPosition = 'center top';
+      case "Center":
+        document.body.style.backgroundPosition = "center top";
         break;
-      case 'Left':
-        document.body.style.backgroundPosition = 'left top';
+      case "Left":
+        document.body.style.backgroundPosition = "left top";
         break;
-      case 'Right':
-        document.body.style.backgroundPosition = 'right top';
+      case "Right":
+        document.body.style.backgroundPosition = "right top";
         break;
       default:
-        document.body.style.backgroundPosition = 'center top';
+        document.body.style.backgroundPosition = "center top";
     }
     // 画像の固定
-    if (valBackgroundImageFixed == '✅') {
-      document.body.style.backgroundAttachment = 'fixed';
+    if (valBackgroundImageFixed == "✅") {
+      document.body.style.backgroundAttachment = "fixed";
     }
-  } catch(error) {
-    console.error('Error: Background Image');
+  } catch (error) {
+    console.error("Error: Background Image");
   }
 
   // Content Background Color(Hex)
   try {
-    const optContentBackground = array.filter((value) => value.option === 'Content Background Color(Hex)');
+    const optContentBackground = array.filter(
+      (value) => value.option === "Content Background Color(Hex)"
+    );
     const valContentBackground = optContentBackground[0].value1;
     const valContentBackgroundOpacity = optContentBackground[0].value3;
     // テーマカラー判定で使うので const ではなく var
     var valContentBackgroundColor = optContentBackground[0].value2;
     // 有効時
-    if (valContentBackground == '✅') {
-      document.head.insertAdjacentHTML('beforeend', '<style>:root{--color-bg-content:' + valContentBackgroundColor + '}</style>');
-      const domContentBackground = document.querySelector('.js-containerMask');
+    if (valContentBackground == "✅") {
+      document.head.insertAdjacentHTML(
+        "beforeend",
+        "<style>:root{--color-bg-content:" +
+          valContentBackgroundColor +
+          "}</style>"
+      );
+      const domContentBackground = document.querySelector(".js-containerMask");
       domContentBackground.style.opacity = valContentBackgroundOpacity;
-      document.body.classList.add('is-bgMask-enabled');
+      document.body.classList.add("is-bgMask-enabled");
     }
-  } catch(error) {
-    console.error('Error: Background mask opacity');
+  } catch (error) {
+    console.error("Error: Background mask opacity");
   }
 
   // Theme
   try {
     // 文字色（白・黒）を背景色のカラーコードから判定
-    var valThemeTextColor = blackOrWhite( valContentBackgroundColor );
+    var valThemeTextColor = blackOrWhite(valContentBackgroundColor);
     switch (valThemeTextColor) {
-      case 'black':
-        document.documentElement.setAttribute('data-theme', 'Light');
+      case "black":
+        document.documentElement.setAttribute("data-theme", "Light");
         break;
-      case 'white':
-        document.documentElement.setAttribute('data-theme', 'Dark');
+      case "white":
+        document.documentElement.setAttribute("data-theme", "Dark");
         break;
       default:
         break;
     }
-  } catch(error) {
-    console.error('Error: theme');
+  } catch (error) {
+    console.error("Error: theme");
   }
-
 
   /////////////////////////////////////
   // -Cover-
 
   try {
-    const optCover = array.filter((value) => value.option === 'Cover');
+    const optCover = array.filter((value) => value.option === "Cover");
     const valCoverSrc = optCover[0].value1;
-    const domCover = document.querySelector('.js-cover-img');
+    const domCover = document.querySelector(".js-cover-img");
     // 画像URL
-    if (valCoverSrc != '') {
-      domCover.setAttribute('src', valCoverSrc);
+    if (valCoverSrc != "") {
+      domCover.setAttribute("src", valCoverSrc);
     } else {
-      document.querySelector('.js-cover').remove();
+      document.querySelector(".js-cover").remove();
     }
-  } catch(error) {
-    console.error('Error: Cover');
+  } catch (error) {
+    console.error("Error: Cover");
   }
-
 
   /////////////////////////////////////
   // -Overview-
 
   // Art Image
   try {
-    const optArtImage = array.filter((value) => value.option === 'Art Image');
+    const optArtImage = array.filter((value) => value.option === "Art Image");
     const valArtImageSrc = optArtImage[0].value1;
-    const domArtImage = document.querySelector('.js-art-img');
+    const domArtImage = document.querySelector(".js-art-img");
     // 画像URL
-    if (valArtImageSrc != '') {
-      domArtImage.setAttribute('src', valArtImageSrc);
-      document.getElementById('art-empty').remove();
+    if (valArtImageSrc != "") {
+      domArtImage.setAttribute("src", valArtImageSrc);
+      document.getElementById("art-empty").remove();
     } else {
-      document.getElementById('art').remove();
+      document.getElementById("art").remove();
     }
-  } catch(error) {
-    console.error('Error: Art Image');
+  } catch (error) {
+    console.error("Error: Art Image");
   }
 
   // Work Title
   try {
-    const domTitle = document.querySelector('.js-title');
+    const domTitle = document.querySelector(".js-title");
     domTitle.textContent = valWorkTitle;
-  } catch(error) {
-    console.error('Error: Title');
+  } catch (error) {
+    console.error("Error: Title");
   }
 
   // Organization
   try {
-    const domOrganization = document.querySelector('.js-organizationName');
+    const domOrganization = document.querySelector(".js-organizationName");
     domOrganization.textContent = valOrganization;
-  } catch(error) {
-    console.error('Error: Organization');
+  } catch (error) {
+    console.error("Error: Organization");
   }
 
   // Specification
   try {
-    const domSpecification = document.querySelector('.js-specification-content');
-    const optSpecification = array.filter((value) => value.option === 'Specification');
+    const domSpecification = document.querySelector(
+      ".js-specification-content"
+    );
+    const optSpecification = array.filter(
+      (value) => value.option === "Specification"
+    );
     const valSpecification = optSpecification[0].value1;
     domSpecification.textContent = valSpecification;
-  } catch(error) {
-    console.error('Error: Overview Specification');
+  } catch (error) {
+    console.error("Error: Overview Specification");
   }
 
   // Release Date
   try {
-    const domReleaseDate = document.querySelector('.js-releaseDate-content');
-    const optReleaseDate = array.filter((value) => value.option === 'Release Date');
+    const domReleaseDate = document.querySelector(".js-releaseDate-content");
+    const optReleaseDate = array.filter(
+      (value) => value.option === "Release Date"
+    );
     const valReleaseDate = optReleaseDate[0].value1;
     domReleaseDate.textContent = valReleaseDate;
-  } catch(error) {
-    console.error('Error: Overview Release Date');
+  } catch (error) {
+    console.error("Error: Overview Release Date");
   }
 
   // Location
   try {
-    const domLocation = document.querySelector('.js-location-content');
-    const optLocation = array.filter((value) => value.option === 'Location');
+    const domLocation = document.querySelector(".js-location-content");
+    const optLocation = array.filter((value) => value.option === "Location");
     const valLocation = optLocation[0].value1;
     domLocation.textContent = valLocation;
-  } catch(error) {
-    console.error('Error: Overview Location');
+  } catch (error) {
+    console.error("Error: Overview Location");
   }
 
   // Price
   try {
-    const domPrice = document.querySelector('.js-price-content');
-    const optPrice = array.filter((value) => value.option === 'Price');
+    const domPrice = document.querySelector(".js-price-content");
+    const optPrice = array.filter((value) => value.option === "Price");
     const valPrice = optPrice[0].value1;
     domPrice.textContent = valPrice;
-  } catch(error) {
-    console.error('Error: Overview Price');
+  } catch (error) {
+    console.error("Error: Overview Price");
   }
 
   // Hashtag
   try {
-    const domHashtag = document.querySelector('.js-hashtag');
-    const domHashtagLabel = document.querySelector('.js-hashtag-label');
-    const domHashtagLink = document.querySelector('.js-hashtag-link');
-    if (valHashtag != '') {
-      domHashtagLink.textContent = '#' + valHashtag;
-      const HashtagLink = 'https://twitter.com/hashtag/' + valHashtag + '?src=hash';
-      domHashtagLink.setAttribute('href', HashtagLink);
+    const domHashtag = document.querySelector(".js-hashtag");
+    const domHashtagLabel = document.querySelector(".js-hashtag-label");
+    const domHashtagLink = document.querySelector(".js-hashtag-link");
+    if (valHashtag != "") {
+      domHashtagLink.textContent = "#" + valHashtag;
+      const HashtagLink =
+        "https://twitter.com/hashtag/" + valHashtag + "?src=hash";
+      domHashtagLink.setAttribute("href", HashtagLink);
     } else {
       domHashtag.remove();
       domHashtagLabel.remove();
     }
-  } catch(error) {
-    console.error('Error: Overview hashtag');
+  } catch (error) {
+    console.error("Error: Overview hashtag");
   }
-
 
   /////////////////////////////////////
   // -Store-
   // Store Heading (Option)
   try {
-    const domStoreHeading = document.querySelector('.js-store-heading');
-    const optStoreHeading = array.filter((value) => value.option === 'Store Heading');
+    const domStoreHeading = document.querySelector(".js-store-heading");
+    const optStoreHeading = array.filter(
+      (value) => value.option === "Store Heading"
+    );
     const valStoreHeading = optStoreHeading[0].value1;
     domStoreHeading.textContent = valStoreHeading;
     // 空欄ならHTMLから非表示
-    if (valStoreHeading == '') {
-      document.querySelector('.js-section-store').remove();
+    if (valStoreHeading == "") {
+      document.querySelector(".js-section-store").remove();
     }
-  } catch(error) {
-    console.error('Error: Store heading');
+  } catch (error) {
+    console.error("Error: Store heading");
   }
   // Store (Option)
   try {
-    const domStoreWrap = document.querySelector('.js-store-wrap');
-    const domStore = document.querySelector('.js-store-link'); // コピー元を取得
-    const optStore = array.filter((value) => value.option === 'Store');
+    const domStoreWrap = document.querySelector(".js-store-wrap");
+    const domStore = document.querySelector(".js-store-link"); // コピー元を取得
+    const optStore = array.filter((value) => value.option === "Store");
     for (let i = 0; i < optStore.length; i++) {
       const domStoreClone = domStore.cloneNode(true);
       // option
-      if (optStore[i].value1 != '') {
+      if (optStore[i].value1 != "") {
         domStoreClone.textContent = optStore[i].value1;
-        domStoreClone.setAttribute('href', optStore[i].value2);
+        domStoreClone.setAttribute("href", optStore[i].value2);
       }
       domStoreWrap.appendChild(domStoreClone);
     }
     domStore.remove(); // コピー元を削除
-  } catch(error) {
-    console.error('Error: Store');
+  } catch (error) {
+    console.error("Error: Store");
   }
 
   /////////////////////////////////////
   // -Share Buttons-
   try {
-    const domShareTwitter = document.querySelector('.js-share-tw');
-    const domShareFacebook = document.querySelector('.js-share-fb');
-    let twitterLink = 'https://twitter.com/share?text=' + encodedSiteTitle + '&url=' + siteUrl;
+    const domShareTwitter = document.querySelector(".js-share-tw");
+    const domShareFacebook = document.querySelector(".js-share-fb");
+    let twitterLink =
+      "https://twitter.com/share?text=" + encodedSiteTitle + "&url=" + siteUrl;
     // ハッシュタグが設定されていればシェアURLに含める
-    if (valHashtag != '') {
-      twitterLink += '&hashtags=' + valHashtag;
+    if (valHashtag != "") {
+      twitterLink += "&hashtags=" + valHashtag;
     }
-    domShareTwitter.setAttribute('href', twitterLink);
-    const facebookLink = 'http://www.facebook.com/sharer.php?u=' + siteUrl;
-    domShareFacebook.setAttribute('href', facebookLink);
-
-  } catch(error) {
-    console.error('Error: Share buttons');
+    domShareTwitter.setAttribute("href", twitterLink);
+    const facebookLink = "http://www.facebook.com/sharer.php?u=" + siteUrl;
+    domShareFacebook.setAttribute("href", facebookLink);
+  } catch (error) {
+    console.error("Error: Share buttons");
   }
 
   /////////////////////////////////////
@@ -428,21 +483,29 @@ function csv_array(data) {
 
   // SoundCloud
   try {
-    const domSoundCloudPlayer = document.getElementById('soundcloud-embed');
-    const valPlayerSoundCloud = array.filter((value) => value.option === 'Player (SoundCloud)')[0].value2;
-    const soundCloudType = array.filter((value) => value.option === 'Player (SoundCloud)')[0].value1;
-    if (valPlayerSoundCloud != '') {
+    const domSoundCloudPlayer = document.getElementById("soundcloud-embed");
+    const valPlayerSoundCloud = array.filter(
+      (value) => value.option === "Player (SoundCloud)"
+    )[0].value2;
+    const soundCloudType = array.filter(
+      (value) => value.option === "Player (SoundCloud)"
+    )[0].value1;
+    if (valPlayerSoundCloud != "") {
       switch (soundCloudType) {
-        case 'Track':
+        case "Track":
           domSoundCloudPlayer.setAttribute(
-            'src',
-            'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/' + valPlayerSoundCloud + '&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true'
+            "src",
+            "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/" +
+              valPlayerSoundCloud +
+              "&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"
           );
           break;
-        case 'Playlist':
+        case "Playlist":
           domSoundCloudPlayer.setAttribute(
-            'src',
-            'https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/' + valPlayerSoundCloud + '&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true'
+            "src",
+            "https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/playlists/" +
+              valPlayerSoundCloud +
+              "&amp;color=%23ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false&amp;show_teaser=true&amp;visual=true"
           );
           break;
         default:
@@ -451,164 +514,186 @@ function csv_array(data) {
     } else {
       domSoundCloudPlayer.remove();
     }
-  } catch(error) {
-    console.error('Error: SoundCloud Player');
+  } catch (error) {
+    console.error("Error: SoundCloud Player");
   }
 
   // YouTube
   try {
-    const domYouTubePlayer = document.getElementById('youtube-embed');
-    const valPlayerYouTube = array.filter((value) => value.option === 'Player (YouTube)')[0].value2;
-    if (valPlayerYouTube != '') {
-      domYouTubePlayer.querySelector('.js-embedded-player').setAttribute(
-        'src',
-        'https://www.youtube.com/embed/' + valPlayerYouTube
-      );
+    const domYouTubePlayer = document.getElementById("youtube-embed");
+    const valPlayerYouTube = array.filter(
+      (value) => value.option === "Player (YouTube)"
+    )[0].value2;
+    if (valPlayerYouTube != "") {
+      domYouTubePlayer
+        .querySelector(".js-embedded-player")
+        .setAttribute(
+          "src",
+          "https://www.youtube.com/embed/" + valPlayerYouTube
+        );
     } else {
       domYouTubePlayer.remove();
     }
-  } catch(error) {
-    console.error('Error: YouTube Player');
+  } catch (error) {
+    console.error("Error: YouTube Player");
   }
 
   /////////////////////////////////////
   // -About-
   // About Heading
   try {
-    const domAboutHeading = document.querySelector('.js-about-heading');
-    const optAboutHeading = array.filter((value) => value.option === 'About Heading');
+    const domAboutHeading = document.querySelector(".js-about-heading");
+    const optAboutHeading = array.filter(
+      (value) => value.option === "About Heading"
+    );
     const valAboutHeading = optAboutHeading[0].value1;
     domAboutHeading.textContent = valAboutHeading;
-  } catch(error) {
-    console.error('Error: About heading');
+  } catch (error) {
+    console.error("Error: About heading");
   }
 
   // About
   try {
-    const domAboutWrap = document.querySelector('.js-about-wrap');
-    const domAbout = document.querySelector('.js-about'); // コピー元を取得
+    const domAboutWrap = document.querySelector(".js-about-wrap");
+    const domAbout = document.querySelector(".js-about"); // コピー元を取得
     for (let i = 0; i < optAbout.length; i++) {
       const domAboutClone = domAbout.cloneNode(true);
       domAboutClone.textContent = optAbout[i].value1;
       domAboutWrap.appendChild(domAboutClone);
     }
     domAbout.remove(); // コピー元を削除
-  } catch(error) {
-    console.error('Error: About');
+  } catch (error) {
+    console.error("Error: About");
   }
 
   /////////////////////////////////////
   // -Gallery-
   try {
-    const optGallery = array.filter((value) => value.option === 'Gallery');
-    const domGalleryWrap = document.querySelector('.js-dom-gallery-wrap');
-    const domGallery = document.querySelector('.js-dom-gallery'); // コピー元を取得
+    const optGallery = array.filter((value) => value.option === "Gallery");
+    const domGalleryWrap = document.querySelector(".js-dom-gallery-wrap");
+    const domGallery = document.querySelector(".js-dom-gallery"); // コピー元を取得
 
     // lightbox
-    const domGalleryLightboxWrap = document.querySelector('.js-dom-gallery-lightbox-wrap');
-    const domGalleryLightbox = document.querySelector('.js-dom-gallery-lightbox'); // コピー元を取得
+    const domGalleryLightboxWrap = document.querySelector(
+      ".js-dom-gallery-lightbox-wrap"
+    );
+    const domGalleryLightbox = document.querySelector(
+      ".js-dom-gallery-lightbox"
+    ); // コピー元を取得
 
     for (let i = 0; i < optGallery.length; i++) {
       const domGalleryClone = domGallery.cloneNode(true);
-      domGalleryClone.setAttribute('data-index', i + 1); // lightbox のために data 属性を振る
-      domGalleryClone.querySelector('.js-dom-gallery-img').setAttribute('src', optGallery[i].value1);
+      domGalleryClone.setAttribute("data-index", i + 1); // lightbox のために data 属性を振る
+      domGalleryClone
+        .querySelector(".js-dom-gallery-img")
+        .setAttribute("src", optGallery[i].value1);
       domGalleryWrap.appendChild(domGalleryClone);
 
       // lightbox
       const domGalleryLightboxClone = domGalleryLightbox.cloneNode(true);
-      domGalleryLightboxClone.setAttribute('data-index', i + 1); // lightbox のために data 属性を振る
-      domGalleryLightboxClone.querySelector('.js-dom-gallery-lightbox-img').setAttribute('src', optGallery[i].value1);
+      domGalleryLightboxClone.setAttribute("data-index", i + 1); // lightbox のために data 属性を振る
+      domGalleryLightboxClone
+        .querySelector(".js-dom-gallery-lightbox-img")
+        .setAttribute("src", optGallery[i].value1);
       domGalleryLightboxWrap.appendChild(domGalleryLightboxClone);
-
     }
     domGallery.remove(); // コピー元を削除
     domGalleryLightbox.remove(); // コピー元を削除
     // 空欄ならHTMLからセクションごと非表示
-    if (optGallery[0].value1 == '') {
-      document.getElementById('gallery').remove();
+    if (optGallery[0].value1 == "") {
+      document.getElementById("gallery").remove();
     }
-  } catch(error) {
-    console.error('Error: Gallery');
+  } catch (error) {
+    console.error("Error: Gallery");
   }
-
 
   /////////////////////////////////////
   // -Tracklist-
   // Tracklist Heading
   try {
-    const domTracklistHeading = document.querySelector('.js-tracklist-heading');
-    const optTracklistHeading = array.filter((value) => value.option === 'Tracklist Heading');
+    const domTracklistHeading = document.querySelector(".js-tracklist-heading");
+    const optTracklistHeading = array.filter(
+      (value) => value.option === "Tracklist Heading"
+    );
     const valTracklistHeading = optTracklistHeading[0].value1;
     domTracklistHeading.textContent = valTracklistHeading;
     // 空欄ならHTMLからセクションごと非表示
-    if (valTracklistHeading == '') {
-      document.getElementById('tracklist').remove();
+    if (valTracklistHeading == "") {
+      document.getElementById("tracklist").remove();
     }
-  } catch(error) {
-    console.error('Error: Tracklist heading');
+  } catch (error) {
+    console.error("Error: Tracklist heading");
   }
 
   // Tracklist
   try {
-    const domTrackWrap = document.querySelector('.js-track-wrap');
-    const domTrack = document.querySelector('.js-track'); // コピー元を取得
-    const optTrack = array.filter((value) => value.option === 'Track');
+    const domTrackWrap = document.querySelector(".js-track-wrap");
+    const domTrack = document.querySelector(".js-track"); // コピー元を取得
+    const optTrack = array.filter((value) => value.option === "Track");
     for (let i = 0; i < optTrack.length; i++) {
       const domTrackClone = domTrack.cloneNode(true);
       // track title
-      domTrackClone.querySelector('.js-track-name').textContent = optTrack[i].value1;
+      domTrackClone.querySelector(".js-track-name").textContent =
+        optTrack[i].value1;
       // track description
-      if (optTrack[i].value2 != '') {
-        domTrackClone.querySelector('.js-track-description').textContent = optTrack[i].value2;
+      if (optTrack[i].value2 != "") {
+        domTrackClone.querySelector(".js-track-description").textContent =
+          optTrack[i].value2;
       } else {
-        domTrackClone.querySelector('.js-track-description').remove();
+        domTrackClone.querySelector(".js-track-description").remove();
       }
       // track titleが空欄でなければ配置
-      if (optTrack[i].value1 != '') {
+      if (optTrack[i].value1 != "") {
         domTrackWrap.appendChild(domTrackClone);
       }
     }
     domTrack.remove(); // コピー元を削除
-  } catch(error) {
-    console.error('Error: Track');
+  } catch (error) {
+    console.error("Error: Track");
   }
 
   /////////////////////////////////////
   // -Member-
   // Member Heading
   try {
-    const domMemberHeading = document.querySelector('.js-member-heading');
-    const optMemberHeading = array.filter((value) => value.option === 'Member Heading');
+    const domMemberHeading = document.querySelector(".js-member-heading");
+    const optMemberHeading = array.filter(
+      (value) => value.option === "Member Heading"
+    );
     const valMemberHeading = optMemberHeading[0].value1;
     domMemberHeading.textContent = valMemberHeading;
-  } catch(error) {
-    console.error('Error: Member heading');
+  } catch (error) {
+    console.error("Error: Member heading");
   }
 
   // Member
   try {
-    const domMemberWrap = document.querySelector('.js-member-wrap');
-    const domMember = document.querySelector('.js-member'); // コピー元を取得
-    const optMember = array.filter((value) => value.option === 'Member');
+    const domMemberWrap = document.querySelector(".js-member-wrap");
+    const domMember = document.querySelector(".js-member"); // コピー元を取得
+    const optMember = array.filter((value) => value.option === "Member");
     for (let i = 0; i < optMember.length; i++) {
       const domMemberClone = domMember.cloneNode(true);
-      domMemberClone.querySelector('.js-member-name').textContent = optMember[i].value1;
+      domMemberClone.querySelector(".js-member-name").textContent =
+        optMember[i].value1;
       // option
-      if (optMember[i].value2 != '') {
-        domMemberClone.querySelector('.js-member-role').textContent = optMember[i].value2;
+      if (optMember[i].value2 != "") {
+        domMemberClone.querySelector(".js-member-role").textContent =
+          optMember[i].value2;
       } else {
-        domMemberClone.querySelector('.js-member-role').remove();
+        domMemberClone.querySelector(".js-member-role").remove();
       }
-      if (optMember[i].value3 != '') {
-        domMemberClone.querySelector('.js-member-url').setAttribute('href', optMember[i].value3);
+      if (optMember[i].value3 != "") {
+        domMemberClone
+          .querySelector(".js-member-url")
+          .setAttribute("href", optMember[i].value3);
       } else {
-        domMemberClone.querySelector('.js-member-link').remove();
+        domMemberClone.querySelector(".js-member-link").remove();
       }
       domMemberWrap.appendChild(domMemberClone);
     }
     domMember.remove(); // コピー元を削除
-  } catch(error) {
-    console.error('Error: Member');
+  } catch (error) {
+    console.error("Error: Member");
   }
 
   /////////////////////////////////////
@@ -616,58 +701,74 @@ function csv_array(data) {
 
   // Organization Logo
   try {
-    const optOrganizationLogo = array.filter((value) => value.option === 'Organization Logo');
+    const optOrganizationLogo = array.filter(
+      (value) => value.option === "Organization Logo"
+    );
     const valOrganizationLogoSrc = optOrganizationLogo[0].value1;
-    const domOrganizationLogo = document.querySelector('.js-organization-logo-img');
+    const domOrganizationLogo = document.querySelector(
+      ".js-organization-logo-img"
+    );
     // 画像URL
-    if (valOrganizationLogoSrc != '') {
-      domOrganizationLogo.setAttribute('src', valOrganizationLogoSrc);
-      domOrganizationLogo.setAttribute('alt', valOrganization);
+    if (valOrganizationLogoSrc != "") {
+      domOrganizationLogo.setAttribute("src", valOrganizationLogoSrc);
+      domOrganizationLogo.setAttribute("alt", valOrganization);
     } else {
       domOrganizationLogo.remove();
-      document.querySelector('.js-organization-logo').textContent = valOrganization;
+      document.querySelector(".js-organization-logo").textContent =
+        valOrganization;
     }
-  } catch(error) {
-    console.error('Error: Organization Logo');
+  } catch (error) {
+    console.error("Error: Organization Logo");
   }
 
   // Organization Links
   try {
-    const domOrganizationLinkWrap = document.querySelector('.js-organization-link-wrap');
-    const domOrganizationLink = document.querySelector('.js-organization-link'); // コピー元を取得
-    const optOrganizationLink = array.filter((value) => value.option === 'Organization Link');
+    const domOrganizationLinkWrap = document.querySelector(
+      ".js-organization-link-wrap"
+    );
+    const domOrganizationLink = document.querySelector(".js-organization-link"); // コピー元を取得
+    const optOrganizationLink = array.filter(
+      (value) => value.option === "Organization Link"
+    );
 
     for (let i = 0; i < optOrganizationLink.length; i++) {
       const domOrganizationLinkClone = domOrganizationLink.cloneNode(true);
-      domOrganizationLinkClone.setAttribute('href', optOrganizationLink[i].value2);
-      domOrganizationLinkClone.querySelector('.js-organization-link-label').textContent = optOrganizationLink[i].value1;
+      domOrganizationLinkClone.setAttribute(
+        "href",
+        optOrganizationLink[i].value2
+      );
+      domOrganizationLinkClone.querySelector(
+        ".js-organization-link-label"
+      ).textContent = optOrganizationLink[i].value1;
 
       domOrganizationLinkWrap.appendChild(domOrganizationLinkClone);
     }
     domOrganizationLink.remove(); // コピー元を削除
     // 空欄ならHTMLから非表示
-    if (optOrganizationLink[0].value1 == '') {
+    if (optOrganizationLink[0].value1 == "") {
       domOrganizationLinkWrap.remove();
     }
-  } catch(error) {
-    console.error('Error: Organization Links');
+  } catch (error) {
+    console.error("Error: Organization Links");
   }
 
   /////////////////////////////////////
   // -Footer-
-  document.querySelector('.js-footer-workTitle').textContent = valWorkTitle;
+  document.querySelector(".js-footer-workTitle").textContent = valWorkTitle;
   // footer-text (option)
   try {
-    const domFooterText = document.querySelector('.js-footer-text');
-    const optFooterText = array.filter((value) => value.option === 'Footer Text');
+    const domFooterText = document.querySelector(".js-footer-text");
+    const optFooterText = array.filter(
+      (value) => value.option === "Footer Text"
+    );
     const valFooterText = optFooterText[0].value1;
-    if (valFooterText != '') {
-      domFooterText.textContent = valFooterText
+    if (valFooterText != "") {
+      domFooterText.textContent = valFooterText;
     } else {
       domFooterText.remove();
     }
-  } catch(error) {
-    console.error('Error: Footer text');
+  } catch (error) {
+    console.error("Error: Footer text");
   }
 
   /////////////////////////////////////
@@ -677,17 +778,22 @@ function csv_array(data) {
   const urlParam = location.search;
   if (urlParam === "?prebuild=true") {
     // プレビュー用バナーを消す
-    document.querySelector('.js-prebuild').remove();
+    document.querySelector(".js-prebuild").remove();
     // 検索避けない設定の場合noindex消す
-    const valRobots = array.filter((value) => value.option === 'Hide on Search Results')[0].value1;
-    if (valRobots == '-') {
-      document.getElementById('meta-robots').remove();
+    const valRobots = array.filter(
+      (value) => value.option === "Hide on Search Results"
+    )[0].value1;
+    if (valRobots == "-") {
+      document.getElementById("meta-robots").remove();
     }
     // jsでの書き換えがロードしきってからDOMを取得する
     window.addEventListener("load", function () {
       let snapshot = new XMLSerializer().serializeToString(document);
       // 不要な要素をhtml文字列から抜き取る
-      snapshot = snapshot.replace('<script src="_src/preview.js"></script>', '');
+      snapshot = snapshot.replace(
+        '<script src="_src/preview.js"></script>',
+        ""
+      );
       // ダウンロード
       let blob = new Blob([snapshot], { type: "text/plan" });
       let link = document.createElement("a");
@@ -696,5 +802,4 @@ function csv_array(data) {
       link.click();
     });
   }
-
 }
