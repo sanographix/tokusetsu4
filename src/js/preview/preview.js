@@ -270,12 +270,10 @@ function csv_array(data) {
     const optContentBackground = array.filter(
       (value) => value.option === "Content Background Color(Hex)"
     );
-    const valContentBackground = optContentBackground[0].value1;
-    const valContentBackgroundOpacity = optContentBackground[0].value3;
     // テーマカラー判定で使うので const ではなく var
-    var valContentBackgroundColor = optContentBackground[0].value2;
-    // 有効時
-    if (valContentBackground == "✅") {
+    var valContentBackgroundColor = optContentBackground[0].value1;
+    const valContentBackgroundOpacity = optContentBackground[0].value2;
+    if (valContentBackgroundColor != "") {
       document.head.insertAdjacentHTML(
         "beforeend",
         "<style>:root{--color-bg-content:" +
