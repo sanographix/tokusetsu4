@@ -24,12 +24,13 @@
     font-weight: normal;
     font-size: var(--font-size-75);
 }
-.overview-art {
-    max-width: 80%;
-    margin: auto;
+.overview-art-wrapper {
+    margin: 0 10%;
     @media #{g.$mq-md} {
-        max-width: unset;
+        margin: unset;
     }
+}
+.overview-art {
     .art-img {
         width: 100%;
         display: block;
