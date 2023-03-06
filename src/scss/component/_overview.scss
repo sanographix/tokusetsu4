@@ -25,6 +25,11 @@
     font-size: var(--font-size-75);
 }
 .overview-art {
+    max-width: 80%;
+    margin: auto;
+    @media #{g.$mq-md} {
+        max-width: unset;
+    }
     .art-img {
         width: 100%;
         display: block;
