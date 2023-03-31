@@ -70,14 +70,18 @@ function csv_array(data) {
   const valHashtag = array.filter((value) => value.option === "Hashtag")[0]
     .value1;
 
-  // Favicon
+  // Favicon (option)
   try {
     const optFavicon = array.filter(
       (value) => value.option === "Site Icon (favicon)"
     );
     const valFavicon = optFavicon[0].value1;
-    const domFavicon = document.getElementById("favicon");
-    domFavicon.href = valFavicon;
+    if (valFavicon != "") {
+      var favicon = document.createElement("link");
+      favicon.rel = "icon";
+      favicon.href = valFavicon;
+      document.head.appendChild(favicon);
+    }
   } catch (error) {
     console.error("Error: favicon");
   }
