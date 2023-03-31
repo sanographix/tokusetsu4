@@ -94,9 +94,20 @@ function csv_array(data) {
     console.error("Error: canonical");
   }
 
+  // cover (og-imageの代替になりうるので先に定義しておく)
+  const optCover = array.filter((value) => value.option === "Cover");
+  var valCoverSrc = optCover[0].value1;
+
   // og-image
   const optOgImage = array.filter((value) => value.option === "Share Image");
-  const valOgImage = optOgImage[0].value1;
+  var valOgImageSrc = optOgImage[0].value1;
+  // Share Imageが記入されていればファイル名を指定
+  // カラだったらカバーを代替画像にする
+  if (valOgImageSrc != "") {
+    var valOgImage = valOgImageSrc;
+  } else {
+    var valOgImage = valCoverSrc;
+  }
 
   // og-description
   // About の1行目の値を利用する
@@ -314,8 +325,6 @@ function csv_array(data) {
   // -Cover-
 
   try {
-    const optCover = array.filter((value) => value.option === "Cover");
-    const valCoverSrc = optCover[0].value1;
     const domCover = document.querySelector(".js-cover-img");
     // 画像URL
     if (valCoverSrc != "") {
