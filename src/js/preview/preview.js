@@ -8,7 +8,15 @@
  *   licenses: MIT
  *   Copyright (c) 2014 Kash Nouroozi
  *   https://github.com/knrz/CSV.js
- */
+ * vanilla-tilt.js:
+ *   licenses: MIT
+ *   Copyright (c) 2017 Șandor Sergiu
+ *   https://github.com/micku7zu/vanilla-tilt.js
+ * i18n-language.js:
+ *   licenses: MIT
+ *   Copyright (c) 2020 Shin Hyun
+ *   https://github.com/kyaryunha/i18n-language.js
+*/
 
 // watchされているので保存したらビルドされる
 function csv_data(dataPath) {
