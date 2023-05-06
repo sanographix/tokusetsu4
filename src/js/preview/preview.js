@@ -817,6 +817,10 @@ function csv_array(data) {
         '<script src="_src/preview.js"></script>',
         ""
       );
+      snapshot = snapshot.replace(
+        '<script src="_src/i18n-language.js"></script>',
+        ""
+      );
       // ダウンロード
       let blob = new Blob([snapshot], { type: "text/plan" });
       let link = document.createElement("a");
