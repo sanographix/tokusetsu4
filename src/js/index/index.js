@@ -1,3 +1,15 @@
+/*@license
+ *
+ * Tokusetsu 4:
+ *   licenses: MIT
+ *   Copyright (c) 2022 sanographix
+ *   https://github.com/sanographix/tokusetsu4
+ * vanilla-tilt.js:
+ *   licenses: MIT
+ *   Copyright (c) 2017 Șandor Sergiu
+ *   https://github.com/micku7zu/vanilla-tilt.js
+*/
+
 // カウントダウンタイマー
 // UTCで指定された日付から残り時間を算出したのち、タイムゾーンとの時差を解消
 (function() {
