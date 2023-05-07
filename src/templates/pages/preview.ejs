@@ -300,10 +300,22 @@
   <div class="prebuild-container">
     <div class="prebuild-content">
       <h1>Almost Done...!</h1>
-      <p>
+      <select id="change-language">
+        <option value="jp" selected="selected">
+          日本語
+        </option>
+        <option value="en">
+          English
+        </option>
+      </select>
+      <p data-lang="jp">
         <strong>現在、プレビューを表示しています。</strong><br />
         あと一息で公開できます！
         ページをよく確認して、内容に間違いなければ公開用ファイルをダウンロードしてください。次のステップに進みましょう！
+      </p>
+      <p data-lang="en">
+        <strong>Preview is currently displayed.</strong><br />
+        You are almost ready to publish! Check the page carefully and if you are sure of the content, download the file for publication. Proceed to the next step!
       </p>
     </div>
     <div class="prebuild-action">

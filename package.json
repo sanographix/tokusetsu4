@@ -17,6 +17,7 @@
     "build:css": "npm-run-all scss autoprefixer",
     "build:js_preview": "uglifyjs src/js/preview/* --comments some --compress -o build/_src/preview.js",
     "build:js_index": "uglifyjs src/js/index/* --comments some --compress -o build/_src/index.js",
+    "build:js_i18n": "uglifyjs src/js/i18n/* --comments some --compress -o build/_src/i18n-language.js",
     "watch": "npm-run-all -p watch:*",
     "watch:css": "onchange 'src/scss/' -- npm run build:css",
     "watch:ejs": "onchange 'src/templates/' -- npm run ejs",

@@ -8,7 +8,15 @@
  *   licenses: MIT
  *   Copyright (c) 2014 Kash Nouroozi
  *   https://github.com/knrz/CSV.js
- */
+ * vanilla-tilt.js:
+ *   licenses: MIT
+ *   Copyright (c) 2017 Șandor Sergiu
+ *   https://github.com/micku7zu/vanilla-tilt.js
+ * i18n-language.js:
+ *   licenses: MIT
+ *   Copyright (c) 2020 Shin Hyun
+ *   https://github.com/kyaryunha/i18n-language.js
+*/
 
 // watchされているので保存したらビルドされる
 function csv_data(dataPath) {
@@ -807,6 +815,10 @@ function csv_array(data) {
       // 不要な要素をhtml文字列から抜き取る
       snapshot = snapshot.replace(
         '<script src="_src/preview.js"></script>',
+        ""
+      );
+      snapshot = snapshot.replace(
+        '<script src="_src/i18n-language.js"></script>',
         ""
       );
       // ダウンロード
