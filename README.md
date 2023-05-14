@@ -5,7 +5,7 @@ Tokusetsu 4
 <h2 align="center">
   <a href="https://tokusetsu4.sanographix.net/">Introduction</a>
   <span> · </span>
-  <a href="https://sanographix.gitbook.io/tokusetsu4">Tutorial</a>
+  <a href="https://sanographix.gitbook.io/tokusetsu-4-docs-1/">Tutorial</a>
 </h2>
 
 # For developers
