@@ -72,7 +72,8 @@ function csv_array(data) {
   document.title = siteTitle;
 
   // Site URL (トレイリングスラッシュありに統一してる)
-  const siteUrl = `${location.protocol}//${location.hostname}/`;
+  // サブディレクトリも考慮して、location.pathnameの最後のスラッシュを削除
+  const siteUrl = `${location.protocol}//${location.hostname}${location.pathname.replace(/\/[^/]*$/, '/')}`;
 
   // Hashtag
   const valHashtag = array.filter((value) => value.option === "Hashtag")[0]
@@ -795,8 +796,15 @@ function csv_array(data) {
   }
 
   /////////////////////////////////////
-  // -Download-
+  // -Preiview-
+  // ダウンロードリンクを動的に生成
+  const downloadLink = document.querySelector('.prebuild-download');
+  if (downloadLink) {
+    downloadLink.href = `${siteUrl}preview.html?prebuild=true`;
+  }
 
+  /////////////////////////////////////
+  // -Download-
   // クエリパラメータが?prebuild=trueのときテンプレートをダウンロード
   const urlParam = location.search;
   if (urlParam === "?prebuild=true") {
