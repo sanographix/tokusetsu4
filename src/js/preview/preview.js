@@ -29,7 +29,7 @@ function csv_data(dataPath) {
   request.open("GET", dataPath, true); // csvのパスを指定
   request.send();
 }
-csv_data("../config.csv"); // csvのパス
+csv_data("config.csv"); // csvのパス
 
 function csv_array(data) {
   const array = new CSV(data, {
@@ -793,14 +793,6 @@ function csv_array(data) {
     }
   } catch (error) {
     console.error("Error: Footer text");
-  }
-
-  /////////////////////////////////////
-  // -Preiview-
-  // ダウンロードリンクを動的に生成
-  const downloadLink = document.querySelector('.prebuild-download');
-  if (downloadLink) {
-    downloadLink.href = `${siteUrl}preview.html?prebuild=true`;
   }
 
   /////////////////////////////////////
