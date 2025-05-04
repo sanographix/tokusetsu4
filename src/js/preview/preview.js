@@ -29,7 +29,7 @@ function csv_data(dataPath) {
   request.open("GET", dataPath, true); // csvのパスを指定
   request.send();
 }
-csv_data("../config.csv"); // csvのパス
+csv_data("config.csv"); // csvのパス
 
 function csv_array(data) {
   const array = new CSV(data, {
@@ -72,7 +72,8 @@ function csv_array(data) {
   document.title = siteTitle;
 
   // Site URL (トレイリングスラッシュありに統一してる)
-  const siteUrl = `${location.protocol}//${location.hostname}/`;
+  // サブディレクトリも考慮して、location.pathnameの最後のスラッシュを削除
+  const siteUrl = `${location.protocol}//${location.hostname}${location.pathname.replace(/\/[^/]*$/, '/')}`;
 
   // Hashtag
   const valHashtag = array.filter((value) => value.option === "Hashtag")[0]
@@ -796,7 +797,6 @@ function csv_array(data) {
 
   /////////////////////////////////////
   // -Download-
-
   // クエリパラメータが?prebuild=trueのときテンプレートをダウンロード
   const urlParam = location.search;
   if (urlParam === "?prebuild=true") {
